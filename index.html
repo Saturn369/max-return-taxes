@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Return Taxes — Hartford County | Business Tax Returns | All 50 States</title>
+  <meta name="description" content="Hartford County's premier tax specialists. Expert business tax returns, late filings & amendments. Serving all 50 states.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://maxreturntaxes.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://maxreturntaxes.com/">
+  <meta property="og:title" content="Max Return Taxes — Hartford County | Business Tax Returns | All 50 States">
+  <meta property="og:description" content="Hartford County's premier tax specialists. Expert business tax returns, late filings & amendments. Serving all 50 states.">
+  <meta property="og:image" content="https://maxreturntaxes.com/og-image.jpg">
+  <meta property="og:site_name" content="Max Return Taxes">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Max Return Taxes — Hartford County | Business Tax Returns | All 50 States">
+  <meta name="twitter:description" content="Hartford County's premier tax specialists. Expert business tax returns, late filings & amendments. Serving all 50 states.">
+  <meta name="twitter:image" content="https://maxreturntaxes.com/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===================== CSS VARIABLES ===================== */
+    :root {
+      --bg: #080808;
+      --surface: #0F0F0F;
+      --surface-alt: #141414;
+      --surface-hover: #1A1A1A;
+      --border: rgba(201,168,76,0.12);
+      --border-hover: rgba(201,168,76,0.35);
+      --border-chrome: rgba(155,170,184,0.15);
+      --text: #F2EDE4;
+      --text-secondary: #A8A09A;
+      --text-tertiary: #6B6560;
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --gold-dim: #9A7E3A;
+      --scarlett: #B91C3A;
+      --scarlett-light: #E0243F;
+      --chrome: #9BAAB8;
+      --chrome-light: #BFC9D4;
+      --bg-rgb: 8,8,8;
+      --gold-rgb: 201,168,76;
+      --scarlett-rgb: 185,28,58;
+      --chrome-rgb: 155,170,184;
+      --success: #3D9A6E;
+      --radius: 8px;
+      --radius-lg: 16px;
+      --container: 1200px;
+      --nav-h: 76px;
+      --ease: cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* ===================== RESET ===================== */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    [id]{scroll-margin-top:calc(var(--nav-h) + 20px)}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    button{cursor:pointer;border:none;background:none;font:inherit}
+
+    /* ===================== SCROLL PROGRESS ===================== */
+    .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--scarlett),var(--gold));z-index:1001;transform-origin:left;transform:scaleX(0)}
+
+    /* ===================== CURSOR GLOW ===================== */
+    .cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(var(--gold-rgb),0.05) 0%,transparent 65%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity .3s;will-change:left,top}
+
+    /* ===================== CONTAINER ===================== */
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+    /* ===================== NAV ===================== */
+    .nav{position:fixed;top:0;width:100%;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+    .nav.scrolled{background:rgba(var(--bg-rgb),.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--border);box-shadow:0 1px 20px rgba(0,0,0,.5)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);display:inline-flex;align-items:center;gap:0}
+    .logo-accent{color:var(--gold)}
+    .logo-sep{width:5px;height:5px;background:var(--scarlett);border-radius:50%;margin:0 5px;display:inline-block;flex-shrink:0}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{display:flex;align-items:center;gap:10px}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:4px;cursor:pointer}
+    .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);transition:.3s}
+
+    /* ===================== BUTTONS ===================== */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:var(--radius);transition:all .25s var(--ease);position:relative;overflow:hidden;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif}
+    .btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.07);opacity:0;transition:opacity .2s}
+    .btn:hover::after{opacity:1}
+    .btn:active{transform:scale(.97)!important}
+    .btn-primary{background:linear-gradient(135deg,var(--scarlett) 0%,#8B1127 100%);color:var(--text);border:1px solid rgba(var(--scarlett-rgb),.4);box-shadow:0 2px 12px rgba(var(--scarlett-rgb),.25),inset 0 1px 0 rgba(255,255,255,.08)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--scarlett-rgb),.4)}
+    .btn-primary:focus-visible{outline:2px solid var(--scarlett);outline-offset:3px}
+    .btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);color:#0A0808;border:1px solid var(--gold);box-shadow:0 2px 12px rgba(var(--gold-rgb),.2)}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(var(--gold-rgb),.38);background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 100%)}
+    .btn-gold:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+    .btn-gold:disabled{opacity:.5}
+    .btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--border-chrome)}
+    .btn-ghost:hover{color:var(--text);border-color:rgba(var(--chrome-rgb),.4);transform:translateY(-1px)}
+    .btn-ghost:focus-visible{outline:2px solid var(--chrome);outline-offset:3px}
+    .btn-lg{padding:16px 40px;font-size:.875rem;border-radius:10px}
+
+    /* ===================== HERO ===================== */
+    .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:calc(var(--nav-h) + 60px) 0 100px}
+    /* Animated silk-style gradient blobs */
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg::before{content:'';position:absolute;inset:-60%;background:radial-gradient(ellipse 55% 45% at 18% 28%,rgba(var(--scarlett-rgb),.18) 0%,transparent 55%),radial-gradient(ellipse 45% 55% at 80% 72%,rgba(var(--gold-rgb),.09) 0%,transparent 55%),radial-gradient(ellipse 35% 35% at 55% 15%,rgba(var(--scarlett-rgb),.07) 0%,transparent 50%);animation:silkA 20s ease-in-out infinite alternate}
+    .hero-bg::after{content:'';position:absolute;inset:-60%;background:radial-gradient(ellipse 50% 40% at 68% 60%,rgba(var(--gold-rgb),.07) 0%,transparent 50%),radial-gradient(ellipse 40% 50% at 25% 75%,rgba(var(--scarlett-rgb),.08) 0%,transparent 50%);animation:silkB 26s ease-in-out infinite alternate}
+    @keyframes silkA{0%{transform:translate(0,0) scale(1)}40%{transform:translate(3%,2%) scale(1.04)}100%{transform:translate(-2%,4%) scale(.98)}}
+    @keyframes silkB{0%{transform:translate(0,0) scale(1.02)}50%{transform:translate(-3%,-2%) scale(.97)}100%{transform:translate(2%,3%) scale(1.04)}}
+    /* Subtle grid overlay */
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(var(--gold-rgb),.035) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--gold-rgb),.035) 1px,transparent 1px);background-size:80px 80px;z-index:1}
+    /* Vignette */
+    .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 35%,rgba(var(--bg-rgb),.75) 100%);z-index:2}
+    .hero-content{position:relative;z-index:3;max-width:860px}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--ease) .15s both}
+    .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7vw,6.5rem);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--text);margin-bottom:28px}
+    .hero-title .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+    .hero-title .word-inner{display:inline-block;opacity:0;transform:translateY(105%)}
+    .text-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold),#B08830);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
+    .hero-sub{font-size:1.0625rem;color:var(--text-secondary);max-width:540px;line-height:1.72;margin-bottom:44px;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--ease) .75s both}
+    .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--ease) .95s both}
+    .hero-loc{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text-tertiary);letter-spacing:.04em;margin-top:44px;opacity:0;animation:fadeUp .6s var(--ease) 1.2s both}
+    .hero-loc svg{color:var(--scarlett);flex-shrink:0}
+    /* Rotating badge */
+    .hero-badge{position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:3;opacity:0;animation:fadeUp .8s var(--ease) 1.4s both}
+    .badge-ring{width:164px;height:164px;border-radius:50%;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:rgba(var(--gold-rgb),.03);position:relative}
+    .badge-ring::before{content:'';position:absolute;inset:-1px;border-radius:50%;background:conic-gradient(var(--gold) 0deg,var(--scarlett) 120deg,transparent 180deg,var(--gold) 360deg);animation:badgeSpin 8s linear infinite;z-index:-1;mask:radial-gradient(circle at center,transparent calc(100% - 1.5px),white calc(100% - 1.5px));-webkit-mask:radial-gradient(circle at center,transparent calc(100% - 1.5px),white calc(100% - 1.5px))}
+    @keyframes badgeSpin{to{transform:rotate(360deg)}}
+    .badge-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+    .badge-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-secondary);text-align:center;padding:0 20px;line-height:1.5}
+
+    /* ===================== MARQUEE ===================== */
+    .marquee-wrap{padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:rgba(var(--gold-rgb),.018)}
+    .marquee-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite;width:max-content}
+    .marquee-track span{font-size:.6875rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-tertiary);padding-right:64px}
+    .marquee-track span em{color:var(--gold);font-style:normal}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ===================== STATS ===================== */
+    .stats-section{padding:72px 0}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+    .stat-card{padding:40px 28px;text-align:center;background:var(--surface);border-right:1px solid var(--border);transition:background .3s}
+    .stat-card:last-child{border-right:none}
+    .stat-card:hover{background:var(--surface-hover)}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.25rem;font-weight:700;line-height:1;color:var(--gold);margin-bottom:10px}
+    .stat-num .suf{font-size:2rem}
+    .stat-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary)}
+
+    /* ===================== SECTION COMMONS ===================== */
+    .section-eye{display:inline-flex;align-items:center;gap:10px;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+    .section-eye::before{content:'';width:24px;height:1px;background:var(--gold)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.2rem);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--text);margin-bottom:18px}
+    .section-sub{font-size:1rem;color:var(--text-secondary);max-width:520px;line-height:1.72;margin-bottom:52px}
+    /* Gold shimmer on highlight spans */
+    .shimmer{background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 30%,#FFFAEF 50%,var(--gold-light) 70%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+    @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+
+    /* ===================== SERVICES ===================== */
+    .services-section{padding:96px 0}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+    /* SpotlightCard */
+    .sc{position:relative;padding:40px 36px;background:var(--surface);border-right:1px solid var(--border);overflow:hidden;transition:background .3s}
+    .sc:last-child{border-right:none}
+    .sc::before{content:'';position:absolute;inset:0;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(var(--gold-rgb),.07) 0%,transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:0}
+    .sc:hover::before{opacity:1}
+    .sc:hover{background:var(--surface-hover)}
+    .svc-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--scarlett);background:rgba(var(--scarlett-rgb),.1);border:1px solid rgba(var(--scarlett-rgb),.2);border-radius:4px;padding:3px 8px;margin-bottom:14px;position:relative;z-index:1}
+    .svc-icon{width:48px;height:48px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;z-index:1;background:rgba(var(--gold-rgb),.04);transition:border-color .3s,background .3s}
+    .sc:hover .svc-icon{border-color:rgba(var(--gold-rgb),.3);background:rgba(var(--gold-rgb),.08)}
+    .svc-icon svg{color:var(--gold)}
+    .svc-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:12px;position:relative;z-index:1;line-height:1.25}
+    .svc-desc{font-size:.875rem;color:var(--text-secondary);line-height:1.65;margin-bottom:28px;position:relative;z-index:1}
+    .svc-link{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);position:relative;z-index:1;transition:gap .3s var(--ease),color .2s}
+    .svc-link svg{transition:transform .3s var(--ease)}
+    .svc-link:hover{color:var(--gold-light);gap:12px}
+    .svc-link:hover svg{transform:translateX(4px)}
+
+    /* ===================== BENTO (Why Us) ===================== */
+    .why-section{padding:96px 0;background:var(--surface-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .bc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+    .bc:hover{border-color:rgba(var(--gold-rgb),.25);box-shadow:0 4px 24px rgba(0,0,0,.35)}
+    /* GlareHover sweep */
+    .bc::before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(var(--gold-rgb),.045) 50%,transparent 60%);transform:translateX(-100%);transition:transform 0s;pointer-events:none}
+    .bc:hover::before{transform:translateX(100%);transition:transform .55s ease}
+    .bc-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:10px;position:relative;z-index:1}
+    .bc-body{font-size:.875rem;color:var(--text-secondary);line-height:1.65;position:relative;z-index:1}
+    .bc-icon{font-size:1.75rem;margin-bottom:18px;position:relative;z-index:1;line-height:1}
+    .bc-num{font-family:'Cormorant Garamond',serif;font-size:3.75rem;font-weight:700;line-height:1;margin-bottom:10px;color:var(--gold);position:relative;z-index:1}
+    .s5{grid-column:span 5}
+    .s7{grid-column:span 7}
+    .s4{grid-column:span 4}
+    .s3{grid-column:span 3}
+    .s6{grid-column:span 6}
+    .bc-gold{border-color:rgba(var(--gold-rgb),.2);background:linear-gradient(140deg,rgba(var(--gold-rgb),.05) 0%,var(--surface) 55%)}
+    .bc-scarlett{border-color:rgba(var(--scarlett-rgb),.18);background:linear-gradient(140deg,rgba(var(--scarlett-rgb),.06) 0%,var(--surface) 55%)}
+    .bc-chrome{border-color:rgba(var(--chrome-rgb),.18)}
+
+    /* ===================== PROCESS ===================== */
+    .process-section{padding:96px 0}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative}
+    .process-grid::before{content:'';position:absolute;top:36px;left:calc(16.666% + 36px);right:calc(16.666% + 36px);height:1px;background:linear-gradient(90deg,var(--gold),var(--scarlett),var(--gold));opacity:.3}
+    .p-step{text-align:center}
+    .p-num{width:72px;height:72px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:var(--gold);background:var(--surface);position:relative;z-index:1;transition:border-color .3s,background .3s}
+    .p-step:hover .p-num{border-color:var(--gold);background:rgba(var(--gold-rgb),.08)}
+    .p-title{font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:var(--text);margin-bottom:10px}
+    .p-body{font-size:.875rem;color:var(--text-secondary);line-height:1.65}
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testi-section{padding:96px 0;background:var(--surface-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+    .testi-track{display:flex;gap:18px;margin-top:44px;animation:testiScroll 42s linear infinite;width:max-content}
+    .testi-track:hover{animation-play-state:paused}
+    @keyframes testiScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tc{width:340px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:border-color .3s}
+    .tc:hover{border-color:rgba(var(--gold-rgb),.25)}
+    .tc-stars{display:flex;gap:3px;margin-bottom:14px}
+    .tc-stars svg{color:var(--gold)}
+    .tc-text{font-size:.875rem;color:var(--text-secondary);line-height:1.72;margin-bottom:20px;font-style:italic}
+    .tc-author{display:flex;align-items:center;gap:12px}
+    .tc-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--scarlett),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:white;flex-shrink:0}
+    .tc-name{font-size:.8125rem;font-weight:600;color:var(--text)}
+    .tc-role{font-size:.75rem;color:var(--text-tertiary)}
+
+    /* ===================== CTA BANNER ===================== */
+    .cta-section{padding:120px 0;text-align:center;position:relative;overflow:hidden}
+    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(var(--scarlett-rgb),.07) 0%,transparent 70%)}
+    .cta-eye{display:inline-flex;align-items:center;gap:8px;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+    .cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:600;line-height:1.1;color:var(--text);max-width:680px;margin:0 auto 18px;position:relative;z-index:1}
+    .cta-sub{font-size:1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 44px;line-height:1.65;position:relative;z-index:1}
+    .cta-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
+    .cta-note{margin-top:20px;font-size:.72rem;color:var(--text-tertiary);letter-spacing:.04em;position:relative;z-index:1}
+
+    /* ===================== CONTACT ===================== */
+    .contact-section{padding:96px 0;background:var(--surface-alt);border-top:1px solid var(--border)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .contact-info{display:flex;flex-direction:column;gap:28px}
+    .ci{display:flex;align-items:flex-start;gap:16px}
+    .ci-icon{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(var(--gold-rgb),.04)}
+    .ci-icon svg{color:var(--gold)}
+    .ci-label{font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+    .ci-val{font-size:.9375rem;color:var(--text);line-height:1.5}
+    .ci-sub{color:var(--text-secondary);font-size:.875rem}
+    .contact-form{display:flex;flex-direction:column;gap:14px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fg{display:flex;flex-direction:column;gap:6px}
+    .flabel{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary)}
+    .fi,.fs,.fta{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:.9375rem;color:var(--text);font-family:'Inter',sans-serif;transition:border-color .2s,box-shadow .2s;outline:none;width:100%}
+    .fi::placeholder,.fta::placeholder{color:var(--text-tertiary)}
+    .fi:focus,.fs:focus,.fta:focus{border-color:rgba(var(--gold-rgb),.5);box-shadow:0 0 0 3px rgba(var(--gold-rgb),.08)}
+    .fs{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B6560' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+    .fs option{background:var(--surface-alt);color:var(--text)}
+    .fta{resize:vertical;min-height:110px}
+
+    /* ===================== FOOTER ===================== */
+    .footer{padding:60px 0 32px;border-top:1px solid var(--border)}
+    .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .footer-tagline{font-size:.875rem;color:var(--text-secondary);line-height:1.65;max-width:240px;margin:14px 0 20px}
+    .f-socials{display:flex;gap:10px}
+    .f-soc{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);transition:color .2s,border-color .2s}
+    .f-soc:hover{color:var(--gold);border-color:rgba(var(--gold-rgb),.3)}
+    .f-col-ttl{font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:14px}
+    .f-links{display:flex;flex-direction:column;gap:10px}
+    .f-links a{font-size:.875rem;color:var(--text-secondary);transition:color .2s}
+    .f-links a:hover{color:var(--gold)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+    .f-copy{font-size:.72rem;color:var(--text-tertiary);letter-spacing:.03em}
+    .f-credit{font-size:.6875rem;color:var(--text-tertiary)}
+    .f-credit a{color:var(--gold-dim);text-decoration:underline;text-underline-offset:3px}
+
+    /* ===================== SCROLL REVEAL ===================== */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .reveal.in-view{opacity:1;transform:none}
+    .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+    .stagger.in-view > *:nth-child(1){opacity:1;transform:none;transition-delay:0s}
+    .stagger.in-view > *:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
+    .stagger.in-view > *:nth-child(3){opacity:1;transform:none;transition-delay:.2s}
+    .stagger.in-view > *:nth-child(4){opacity:1;transform:none;transition-delay:.3s}
+    .stagger.in-view > *:nth-child(5){opacity:1;transform:none;transition-delay:.4s}
+
+    /* ===================== KEYFRAMES ===================== */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    @keyframes wordIn{from{opacity:0;transform:translateY(105%)}to{opacity:1;transform:none}}
+
+    /* ===================== FOCUS RING ===================== */
+    :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+    /* ===================== REDUCED MOTION ===================== */
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+      html{scroll-behavior:auto}
+      .reveal,.stagger>*{opacity:1;transform:none}
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width:1024px){
+      .s5{grid-column:span 6}.s7{grid-column:span 6}.s4{grid-column:span 6}.s3{grid-column:span 6}
+      .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+      .hero-badge{display:none}
+    }
+    @media (max-width:768px){
+      :root{--nav-h:64px}
+      .nav-links{display:none}
+      .nav-cta .btn-ghost{display:none}
+      .hamburger{display:flex}
+      .services-grid{grid-template-columns:1fr}
+      .sc{border-right:none;border-bottom:1px solid var(--border)}
+      .sc:last-child{border-bottom:none}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .stat-card:nth-child(2){border-right:none}
+      .stat-card:nth-child(3){border-right:1px solid var(--border);border-top:1px solid var(--border)}
+      .stat-card:nth-child(4){border-right:none;border-top:1px solid var(--border)}
+      .bento [class*="s"]{grid-column:span 12!important}
+      .process-grid{grid-template-columns:1fr;gap:36px}
+      .process-grid::before{display:none}
+      .contact-grid{grid-template-columns:1fr;gap:48px}
+      .form-row{grid-template-columns:1fr}
+      .footer-top{grid-template-columns:1fr}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+      .hero-actions{flex-direction:column;align-items:flex-start}
+      .cta-actions{flex-direction:column;align-items:center}
+    }
+    @media (max-width:480px){
+      .container{padding:0 16px}
+      .stats-grid{grid-template-columns:1fr}
+      .stat-card{border-right:none;border-bottom:1px solid var(--border)}
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AccountingService",
+        "@id": "https://maxreturntaxes.com/#business",
+        "name": "Max Return Taxes",
+        "url": "https://maxreturntaxes.com",
+        "logo": "https://maxreturntaxes.com/og-image.jpg",
+        "image": "https://maxreturntaxes.com/og-image.jpg",
+        "description": "Hartford County's premier tax specialists. Expert business tax returns, late filings, and amendments. Serving clients across all 50 states.",
+        "telephone": "+18605550100",
+        "email": "info@maxreturntaxes.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hartford County",
+          "addressRegion": "CT",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.7658,
+          "longitude": -72.6851
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "10:00",
+            "closes": "16:00"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Tax Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Business Tax Returns",
+                "description": "S-Corps, C-Corps, partnerships, LLCs, and sole proprietors. Expert business tax preparation maximizing every legal deduction and credit."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Late Filings",
+                "description": "Past-due tax return resolution, IRS penalty minimization, and compliance restoration for individuals and businesses."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Tax Amendments",
+                "description": "Review and amendment of prior-year returns to recover missed deductions and credits, typically going back up to 3 years."
+              }
+            }
+          ]
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": "4"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+            "author": {"@type": "Person", "name": "Marcus R."},
+            "reviewBody": "I had three years of unfiled business returns and was terrified of the IRS. Max Return handled everything calmly and professionally — got me compliant and found refunds I didn't know I had."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+            "author": {"@type": "Person", "name": "Sandra L."},
+            "reviewBody": "My old accountant filed my S-Corp incorrectly for two years. Max Return caught it, amended both returns, and I got back over $4,200. Worth every single penny."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+            "author": {"@type": "Person", "name": "David J."},
+            "reviewBody": "I was nervous working with someone in Connecticut while I'm in California — but it was completely seamless. Everything was done securely online. Great communication throughout."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+            "author": {"@type": "Person", "name": "Kim W."},
+            "reviewBody": "Filed late for 5 years and was drowning in IRS notices. Max Return handled every year, got my penalties significantly reduced, and got me fully current. Absolutely life-changing."
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/maxreturntaxes",
+          "https://www.instagram.com/maxreturntaxes",
+          "https://www.linkedin.com/company/maxreturntaxes"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://maxreturntaxes.com/#webpage",
+        "url": "https://maxreturntaxes.com/",
+        "name": "Max Return Taxes — Hartford County | Business Tax Returns | All 50 States",
+        "description": "Hartford County's premier tax specialists. Expert business tax returns, late filings & amendments. Serving all 50 states.",
+        "isPartOf": {"@id": "https://maxreturntaxes.com/#business"},
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="scroll-progress" id="sp"></div>
+  <div class="cursor-glow" id="cg"></div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:+18605550100" class="btn btn-ghost">Call Now</a>
+        <a href="#contact" class="btn btn-primary magnetic">Get Started</a>
+      </div>
+      <button class="hamburger" id="hbg" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-vignette"></div>
+    <div class="container" style="position:relative;z-index:3;width:100%;display:flex;align-items:center;justify-content:space-between">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Hartford County, CT &nbsp;·&nbsp; Serving All 50 States</div>
+        <h1 class="hero-title" id="heroTitle">
+          <span class="word"><span class="word-inner">Maximize</span></span>&#32;<span class="word"><span class="word-inner">Your</span></span><br><span class="word"><span class="word-inner">Business</span></span>&#32;<span class="word"><span class="word-inner">Tax</span></span>&#32;<span class="word text-gold"><span class="word-inner">Return.</span></span>
+        </h1>
+        <p class="hero-sub">Expert business tax returns, late filings, and amendments — done right. Hartford County's trusted tax specialists serving clients across every state in America.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold btn-lg magnetic">Get My Maximum Return</a>
+          <a href="#services" class="btn btn-ghost btn-lg">Our Services</a>
+        </div>
+        <div class="hero-loc">
+          <svg width="11" height="14" viewBox="0 0 12 15" fill="currentColor"><path d="M6 0C3.794 0 2 1.9 2 4.2c0 3.15 4 9.3 4 9.3s4-6.15 4-9.3C10 1.9 8.206 0 6 0zm0 5.7a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+          Hartford County, Connecticut &nbsp;|&nbsp; CT Licensed &amp; Federally Authorized
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-ring">
+          <div class="badge-num">15<sup style="font-size:1.1rem;vertical-align:super">+</sup></div>
+          <div class="badge-label">Years of<br>Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Business Tax Returns <em>✦</em> Late Filings <em>✦</em> Amendments <em>✦</em> CT Licensed &amp; Federally Authorized <em>✦</em> All 50 States <em>✦</em> Hartford County CT <em>✦</em> Maximum Refund Guaranteed <em>✦</em> Audit Protection <em>✦</em> S-Corps &amp; LLCs <em>✦</em> </span>
+      <span>Business Tax Returns <em>✦</em> Late Filings <em>✦</em> Amendments <em>✦</em> CT Licensed &amp; Federally Authorized <em>✦</em> All 50 States <em>✦</em> Hartford County CT <em>✦</em> Maximum Refund Guaranteed <em>✦</em> Audit Protection <em>✦</em> S-Corps &amp; LLCs <em>✦</em> </span>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid stagger">
+        <div class="stat-card">
+          <div class="stat-num"><span class="cu" data-end="10000">0</span><span class="suf">+</span></div>
+          <div class="stat-label">Returns Filed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="cu" data-end="15">0</span><span class="suf">+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="cu" data-end="50">0</span></div>
+          <div class="stat-label">States Served</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num"><span class="cu" data-end="98">0</span><span class="suf">%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-eye reveal">What We Offer</div>
+      <h2 class="section-title reveal">Complete Tax Solutions<br><span class="shimmer">for Every Situation</span></h2>
+      <p class="section-sub reveal">Whether you're a business owner, need to catch up on late years, or want to fix a prior return — we handle it all, from Hartford County to all 50 states.</p>
+      <div class="services-grid stagger">
+
+        <!-- Business Tax Returns -->
+        <div class="sc" id="s1">
+          <div class="svc-tag">Core Specialty</div>
+          <div class="svc-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+          </div>
+          <h3 class="svc-title">Business Tax Returns</h3>
+          <p class="svc-desc">S-Corps, C-Corps, partnerships, LLCs, and sole proprietors. We navigate complex business taxation to find every legal deduction and credit — maximizing what stays in your pocket.</p>
+          <a href="#contact" class="svc-link">Get Started <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+
+        <!-- Late Filings -->
+        <div class="sc" id="s2">
+          <div class="svc-tag">Don't Wait</div>
+          <div class="svc-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="svc-title">Late Filings</h3>
+          <p class="svc-desc">Haven't filed in one year — or five? No judgment. We specialize in resolving past-due returns, minimizing IRS penalties, and getting you fully compliant again, fast.</p>
+          <a href="#contact" class="svc-link">Get Back on Track <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+
+        <!-- Amendments -->
+        <div class="sc" id="s3">
+          <div class="svc-tag">Fix &amp; Recover</div>
+          <div class="svc-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
+          </div>
+          <h3 class="svc-title">Amendments</h3>
+          <p class="svc-desc">Filed incorrectly or missed deductions? We review and amend prior-year returns to recover money that's rightfully yours — typically going back up to 3 years.</p>
+          <a href="#contact" class="svc-link">Recover What's Yours <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== WHY US (BENTO) ===== -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="section-eye reveal">Why Max Return</div>
+      <h2 class="section-title reveal">The Max Return<br>Difference</h2>
+      <p class="section-sub reveal">We don't just file taxes — we maximize every return, resolve every problem, and serve every client, no matter which state they call home.</p>
+      <div class="bento stagger">
+
+        <div class="bc s5 bc-scarlett">
+          <div class="bc-icon">🗺️</div>
+          <div class="bc-title">Nationwide Service</div>
+          <div class="bc-body">Based in Hartford County, CT — licensed to handle federal and state returns for clients across all 50 states. Location is never a barrier.</div>
+        </div>
+
+        <div class="bc s7 bc-gold">
+          <div class="bc-num">100%</div>
+          <div class="bc-title">Maximum Refund Guarantee</div>
+          <div class="bc-body">We stand behind every return. Every legal deduction found, every credit applied — your maximum refund, guaranteed or we make it right.</div>
+        </div>
+
+        <div class="bc s4 bc-chrome">
+          <div class="bc-icon">💼</div>
+          <div class="bc-title">Business Specialists</div>
+          <div class="bc-body">Deep expertise in S-Corps, C-Corps, LLCs, partnerships, and sole proprietors. Business taxes are our core — not a side service.</div>
+        </div>
+
+        <div class="bc s4">
+          <div class="bc-icon">🤝</div>
+          <div class="bc-title">No Judgment Zone</div>
+          <div class="bc-body">Late years, missed filings, prior mistakes — we've seen everything. Our job is to solve your situation, not judge it.</div>
+        </div>
+
+        <div class="bc s4 bc-gold">
+          <div class="bc-icon">⚡</div>
+          <div class="bc-title">Fast Turnaround</div>
+          <div class="bc-body">Most returns completed in 48–72 hours. Urgent IRS deadlines? We prioritize and deliver without cutting corners.</div>
+        </div>
+
+        <div class="bc s6 bc-gold">
+          <div class="bc-icon">🏛️</div>
+          <div class="bc-title">Licensed &amp; Federally Authorized</div>
+          <div class="bc-body">We are licensed tax practitioners in the state of Connecticut and federally authorized to prepare and file returns for individuals and businesses across all 50 states — with full standing to handle complex multi-state and federal filings.</div>
+        </div>
+
+        <div class="bc s6">
+          <div class="bc-icon">👤</div>
+          <div class="bc-title">Lead Practitioner</div>
+          <div class="bc-body">
+            <strong style="color:var(--text)">Joseph E. Smith</strong><br>
+            <span style="color:var(--text-tertiary);font-size:.8125rem">CT Licensed Tax Practitioner · Federally Authorized</span><br><br>
+            15+ years specializing in business taxation — S-Corps, C-Corps, partnerships, and multi-state returns. Licensed in Connecticut and federally authorized to file in all 50 states.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="section-eye reveal" style="justify-content:center;display:flex;">How It Works</div>
+      <h2 class="section-title reveal" style="text-align:center;">Three Steps to Your<br><span class="shimmer">Maximum Return</span></h2>
+      <div class="process-grid stagger" style="margin-top:56px">
+        <div class="p-step">
+          <div class="p-num">01</div>
+          <h3 class="p-title">Share Your Documents</h3>
+          <p class="p-body">Securely upload or send your tax documents — W-2s, 1099s, business records, prior returns. We make the process simple, wherever you are in the country.</p>
+        </div>
+        <div class="p-step">
+          <div class="p-num">02</div>
+          <h3 class="p-title">We Do the Work</h3>
+          <p class="p-body">Our specialists review, prepare, and optimize your return — finding every deduction and credit while ensuring full IRS compliance and accuracy.</p>
+        </div>
+        <div class="p-step">
+          <div class="p-num">03</div>
+          <h3 class="p-title">Review &amp; File</h3>
+          <p class="p-body">Review your completed return, ask any questions, then approve. We e-file on your behalf and confirm IRS acceptance — maximum return, delivered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testi-section" id="reviews">
+    <div class="container">
+      <div class="section-eye reveal">Client Reviews</div>
+      <h2 class="section-title reveal">What Our Clients Say</h2>
+    </div>
+    <div class="testi-track">
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"I had three years of unfiled business returns and was terrified of the IRS. Max Return handled everything calmly and professionally — got me compliant and found refunds I didn't know I had."</p><div class="tc-author"><div class="tc-avatar">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-role">LLC Owner, Texas</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"My old accountant filed my S-Corp incorrectly for two years. Max Return caught it, amended both returns, and I got back over $4,200. Worth every single penny."</p><div class="tc-author"><div class="tc-avatar">SL</div><div><div class="tc-name">Sandra L.</div><div class="tc-role">S-Corp Owner, Florida</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"I was nervous working with someone in Connecticut while I'm in California — but it was completely seamless. Everything was done securely online. Great communication throughout."</p><div class="tc-author"><div class="tc-avatar">DJ</div><div><div class="tc-name">David J.</div><div class="tc-role">Sole Proprietor, California</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"Filed late for 5 years and was drowning in IRS notices. Max Return handled every year, got my penalties significantly reduced, and got me fully current. Absolutely life-changing."</p><div class="tc-author"><div class="tc-avatar">KW</div><div><div class="tc-name">Kim W.</div><div class="tc-role">Freelancer, New York</div></div></div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"I had three years of unfiled business returns and was terrified of the IRS. Max Return handled everything calmly and professionally — got me compliant and found refunds I didn't know I had."</p><div class="tc-author"><div class="tc-avatar">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-role">LLC Owner, Texas</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"My old accountant filed my S-Corp incorrectly for two years. Max Return caught it, amended both returns, and I got back over $4,200. Worth every single penny."</p><div class="tc-author"><div class="tc-avatar">SL</div><div><div class="tc-name">Sandra L.</div><div class="tc-role">S-Corp Owner, Florida</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"Filed late for 5 years and was drowning in IRS notices. Max Return handled every year, got my penalties significantly reduced, and got me fully current. Absolutely life-changing."</p><div class="tc-author"><div class="tc-avatar">KW</div><div><div class="tc-name">Kim W.</div><div class="tc-role">Freelancer, New York</div></div></div></div>
+      <div class="tc"><div class="tc-stars"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="tc-text">"I was nervous working with someone in Connecticut while I'm in California — but it was completely seamless. Everything was done securely online. Great communication throughout."</p><div class="tc-author"><div class="tc-avatar">DJ</div><div><div class="tc-name">David J.</div><div class="tc-role">Sole Proprietor, California</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-eye">Ready to Get Started?</div>
+      <h2 class="cta-title reveal">Stop Leaving Money<br>on the Table</h2>
+      <p class="cta-sub reveal">Join thousands of clients who trust Max Return Taxes — from Hartford County to all 50 states.</p>
+      <div class="cta-actions reveal">
+        <a href="#contact" class="btn btn-gold btn-lg magnetic">Start My Return Today</a>
+        <a href="tel:+18605550100" class="btn btn-ghost btn-lg">Call Us Now</a>
+      </div>
+      <p class="cta-note">Free consultation · No obligation · Hartford County, CT · All 50 States</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-eye reveal">Get In Touch</div>
+      <h2 class="section-title reveal">Start Your Return Today</h2>
+      <div class="contact-grid" style="margin-top:48px">
+
+        <div>
+          <p style="font-size:.9375rem;color:var(--text-secondary);line-height:1.72;margin-bottom:36px">Ready to maximize your return or resolve a tax problem? Reach out and we'll respond within 24 hours. Serving Hartford County, CT and clients nationwide.</p>
+          <div class="contact-info">
+            <div class="ci">
+              <div class="ci-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+              <div><div class="ci-label">Location</div><div class="ci-val">Hartford County, Connecticut<br><span class="ci-sub">Serving All 50 States</span></div></div>
+            </div>
+            <div class="ci">
+              <div class="ci-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg></div>
+              <div><div class="ci-label">Phone</div><div class="ci-val">(860) 555-0100</div></div>
+            </div>
+            <div class="ci">
+              <div class="ci-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg></div>
+              <div><div class="ci-label">Email</div><div class="ci-val">info@maxreturntaxes.com</div></div>
+            </div>
+            <div class="ci">
+              <div class="ci-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div><div class="ci-label">Hours</div><div class="ci-val">Mon–Fri: 9am–7pm ET<br><span class="ci-sub">Sat: 10am–4pm · Extended during tax season</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="cForm">
+          <div class="form-row">
+            <div class="fg"><label class="flabel" for="fn">First Name</label><input class="fi" type="text" id="fn" placeholder="John" required></div>
+            <div class="fg"><label class="flabel" for="ln">Last Name</label><input class="fi" type="text" id="ln" placeholder="Smith" required></div>
+          </div>
+          <div class="fg"><label class="flabel" for="em">Email Address</label><input class="fi" type="email" id="em" placeholder="john@company.com" required></div>
+          <div class="form-row">
+            <div class="fg"><label class="flabel" for="ph">Phone</label><input class="fi" type="tel" id="ph" placeholder="(555) 000-0000"></div>
+            <div class="fg"><label class="flabel" for="st">Your State</label>
+              <select class="fs" id="st"><option value="">Select state...</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+            </div>
+          </div>
+          <div class="fg"><label class="flabel" for="sv">Service Needed</label>
+            <select class="fs" id="sv"><option value="">Select a service...</option><option>Business Tax Return</option><option>Late Filing (1+ years behind)</option><option>Amendment / Correction</option><option>Individual Tax Return</option><option>IRS Audit Support</option><option>Multiple Services</option></select>
+          </div>
+          <div class="fg"><label class="flabel" for="msg">Tell Us More</label><textarea class="fta" id="msg" placeholder="Briefly describe your tax situation..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-lg magnetic" style="justify-content:center">
+            Send Message
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.269 20.876L5.999 12zm0 0h7.5"/></svg>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
+          <p class="footer-tagline">Hartford County's premier tax specialists — serving every client across all 50 states with expertise and integrity.</p>
+          <div class="f-socials">
+            <a href="#" class="f-soc" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" class="f-soc" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" class="f-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="f-col-ttl">Services</div>
+          <ul class="f-links"><li><a href="#services">Business Tax Returns</a></li><li><a href="#services">Late Filings</a></li><li><a href="#services">Amendments</a></li><li><a href="#contact">Individual Returns</a></li><li><a href="#contact">Audit Support</a></li></ul>
+        </div>
+        <div>
+          <div class="f-col-ttl">Company</div>
+          <ul class="f-links"><li><a href="#why">About Us</a></li><li><a href="#process">How It Works</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li></ul>
+        </div>
+        <div>
+          <div class="f-col-ttl">Contact</div>
+          <ul class="f-links" style="gap:14px">
+            <li style="color:var(--text-secondary);font-size:.875rem">Hartford County, CT</li>
+            <li style="color:var(--text-secondary);font-size:.875rem">All 50 States Served</li>
+            <li><a href="tel:+18605550100">(860) 555-0100</a></li>
+            <li><a href="mailto:info@maxreturntaxes.com">info@maxreturntaxes.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="f-copy">© 2025 Max Return Taxes · Hartford County, CT · All rights reserved.</div>
+        <div class="f-credit">Motion effects derived from <a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noopener">vue-bits</a> by DavidHDev (MIT)</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  // Scroll progress bar
+  const sp=document.getElementById('sp');
+  window.addEventListener('scroll',()=>{sp.style.transform=`scaleX(${Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight),1)})`;},{passive:true});
+
+  // Nav scroll state
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+  // Cursor glow (desktop only)
+  if(window.matchMedia('(hover:hover)').matches){
+    const cg=document.getElementById('cg');let raf;
+    document.addEventListener('mousemove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';raf=null;});});
+  }
+
+  // Hero title word-by-word entrance
+  document.querySelectorAll('.hero-title .word-inner').forEach((el,i)=>{
+    el.style.animation=`wordIn .85s cubic-bezier(.16,1,.3,1) ${.28+i*.16}s both`;
+  });
+
+  // Scroll reveal (IntersectionObserver)
+  const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');revObs.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal,.stagger').forEach(el=>revObs.observe(el));
+
+  // SpotlightCard mouse tracking
+  document.querySelectorAll('.sc').forEach(c=>{
+    c.addEventListener('mousemove',e=>{
+      const r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+      c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+
+  // Count up
+  function countUp(el,end,dur=1800){
+    const s=performance.now();const big=end>=1000;
+    const tick=now=>{
+      const p=Math.min((now-s)/dur,1);const ease=1-Math.pow(1-p,3);
+      el.textContent=big?Math.floor(ease*end).toLocaleString():Math.floor(ease*end);
+      if(p<1)requestAnimationFrame(tick);else el.textContent=big?end.toLocaleString():end;
+    };requestAnimationFrame(tick);
+  }
+  const cuObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.end);cuObs.unobserve(e.target);}});},{threshold:.5});
+  document.querySelectorAll('.cu').forEach(el=>cuObs.observe(el));
+
+  // Magnetic buttons
+  if(window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.magnetic').forEach(b=>{
+      b.addEventListener('mousemove',e=>{
+        const r=b.getBoundingClientRect();
+        const x=(e.clientX-r.left-r.width/2)*.28,y=(e.clientY-r.top-r.height/2)*.28;
+        b.style.transform=`translate(${x}px,${y}px) translateY(-2px)`;
+      });
+      b.addEventListener('mouseleave',()=>b.style.transform='');
+    });
+  }
+
+  // Form submit feedback
+  document.getElementById('cForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const btn=e.target.querySelector('button[type=submit]');
+    const orig=btn.innerHTML;
+    btn.innerHTML='<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Message Sent!';
+    btn.disabled=true;btn.style.background='linear-gradient(135deg,#3D9A6E,#2A7A54)';
+    setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;btn.style.background='';e.target.reset();},4000);
+  });
+
+  // Hamburger menu
+  const hbg=document.getElementById('hbg');const nl=document.getElementById('navLinks');let open=false;
+  hbg.addEventListener('click',()=>{
+    open=!open;
+    if(open){
+      nl.style.cssText='display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);padding:24px;gap:20px;border-bottom:1px solid var(--border);z-index:99';
+      hbg.children[0].style.transform='rotate(45deg) translate(4.5px,4.5px)';
+      hbg.children[1].style.opacity='0';
+      hbg.children[2].style.transform='rotate(-45deg) translate(4.5px,-4.5px)';
+    }else{
+      nl.style.cssText='display:none';
+      [0,1,2].forEach(i=>hbg.children[i].style.cssText='');
+    }
+  });
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;nl.style.cssText='display:none';[0,1,2].forEach(i=>hbg.children[i].style.cssText='');}));
+  </script>
+</body>
+</html>
