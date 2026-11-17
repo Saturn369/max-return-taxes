@@ -363,6 +363,104 @@ post("lost-w2-1099-irs-transcript",
 <p>Lost paperwork shouldn't stop you from filing. Between IRS transcripts and your own records, you can almost always rebuild what you need — and the sooner you file, the less penalties and interest add up.</p>''',
      "Missing Paperwork? We Can Help", "Tell us which years you need to file. We'll reply within 24 hours and help track down what's missing.")
 
+post("do-i-need-to-send-1099s-to-contractors",
+     "Do You Need to Send 1099s to Contractors? 2027 Rules & the New $2,000 Threshold | Max Return Taxes",
+     "Do You Need to Send 1099s to Contractors? The 2027 Rules",
+     "Who gets a 1099-NEC, the new $2,000 reporting threshold for 2026 payments, exceptions for corporations and card payments, W-9s, deadlines and penalties.",
+     "Business Taxes", "business-tax-returns",
+     "The threshold just jumped from $600 to $2,000. Here's who still needs a 1099-NEC, and when it's due.",
+     f'''<p>If your business paid freelancers, contractors or other self-employed people this year, you may need to send them a Form 1099-NEC by early 2027. The rules changed recently, so even if you've done this for years, they're worth a fresh look.</p>
+
+<h2>The big change: $600 is now $2,000</h2>
+<p>For years, you had to file a 1099-NEC for any contractor you paid <strong>$600 or more</strong> during the year. A 2025 federal tax law raised that threshold to <strong>$2,000</strong> for payments made in 2026 and later, with inflation adjustments starting after that. The same change applies to many payments reported on Form 1099-MISC, such as rent.</p>
+<p>That means the forms due in early 2027, covering what you paid in 2026, are the first ones under the higher threshold. Paid a contractor $1,500 in 2026? You generally no longer need to send that person a 1099-NEC.</p>
+<p>The contractor still has to report that income on their own return, whether or not they get a form.</p>
+
+<h2>Who gets a 1099-NEC</h2>
+<p>Generally, you need to file a 1099-NEC when all of these are true:</p>
+<ul>
+<li>You paid someone who <strong>isn't your employee</strong>, such as a freelancer, independent contractor or consultant</li>
+<li>You paid them for <strong>services</strong> in the course of your trade or business, not personal expenses</li>
+<li>The person is an <strong>individual, partnership or LLC</strong> that isn't taxed as a corporation</li>
+<li>You paid them <strong>at least the threshold amount</strong> during the year: $2,000 for 2026 payments</li>
+</ul>
+
+<h2>Common exceptions</h2>
+<ul>
+<li><strong>Corporations.</strong> Payments to C-Corps and S-Corps generally don't need a 1099. Payments for legal services are the big exception: attorneys get a 1099 even if their firm is incorporated.</li>
+<li><strong>Card and app payments.</strong> If you paid by credit card, debit card or a payment app's business payment option, the payment company handles the reporting on Form 1099-K. Don't also send a 1099-NEC for those payments.</li>
+<li><strong>Employees.</strong> People on your payroll get a W-2, not a 1099.</li>
+<li><strong>Personal payments.</strong> Hiring someone to paint your own house isn't a business payment.</li>
+</ul>
+
+{callout(P, "business-tax-returns", "Not sure who needs a 1099 this year? We sort out your contractor payments and file your 1099s alongside your business return.")}
+
+<h2>Get a W-9 before you pay</h2>
+<p>The easiest way to stay on top of 1099s is to collect a <strong>Form W-9</strong> from every contractor before you pay them. It gives you their legal name, tax classification and taxpayer identification number. That tells you whether they need a 1099 and gives you everything you need to file one.</p>
+<p>If a contractor won't give you a valid taxpayer ID, you may be required to withhold <strong>24% backup withholding</strong> from their payments and send it to the IRS.</p>
+
+<h2>Deadlines and how to file</h2>
+<p>Form 1099-NEC is due to <strong>both the contractor and the IRS by January 31</strong>. In 2027, January 31 falls on a Sunday, so the deadline is <strong>Monday, February 1, 2027</strong>. Unlike most tax forms, there's no automatic extension.</p>
+<p>If you're filing 10 or more information returns in total, including W-2s and other 1099s, you must file them electronically. The IRS's free IRIS portal lets businesses e-file 1099s directly.</p>
+<p>Some states have their own 1099 filing requirements, and Connecticut is one of them in many cases. Check your state's rules too.</p>
+
+<h2>Penalties for late or missing 1099s</h2>
+<p>The IRS charges a penalty for each 1099 that's filed late, filed with wrong information or never filed. The amount grows the later you file, and it's much steeper if the IRS finds you intentionally ignored the requirement. The penalty dollar amounts are adjusted for inflation every year. Filing on time, even if you need to correct a form later, is always cheaper.</p>
+
+<h2>Contractor or employee?</h2>
+<p>A 1099 only works if the person really is an independent contractor. If you control how, when and where someone does the work, they may legally be an employee. In that case, payroll taxes and a W-2 apply instead. Misclassification can be expensive, so if you're unsure, it's worth getting advice before year-end.</p>''',
+     "Get Your 1099s Done Right", "Send us your list of contractors and payments. We'll reply within 24 hours and tell you exactly who needs a form.")
+
+post("home-office-deduction",
+     "Home Office Deduction: Who Qualifies & How to Calculate It | Max Return Taxes",
+     "The Home Office Deduction: Who Qualifies and How to Claim It",
+     "Who qualifies for the home office deduction, the simplified vs. regular method, what expenses count, how S-Corp owners should handle it, and the depreciation catch when you sell.",
+     "Deductions", "business-tax-returns",
+     "The two tests you have to pass, the simplified vs. regular method, and the catch S-Corp owners often miss.",
+     f'''<p>If you run a business from home, part of what you spend on your home may be deductible. But the rules are strict, and the right way to claim it depends on how your business is set up. Here's how it works.</p>
+
+<h2>First: who can take it</h2>
+<p>The home office deduction is for <strong>self-employed people and business owners</strong>. If you're a W-2 employee who works from home for someone else's company, you generally can't deduct home office expenses on your federal return, even if your employer requires you to work remotely.</p>
+
+<h2>The two tests your space has to pass</h2>
+<h3>1. Regular and exclusive use</h3>
+<p>The space must be used <strong>regularly</strong> for your business, and <strong>only</strong> for your business. A spare room that's purely an office qualifies. A kitchen table where you also eat dinner doesn't. The space doesn't have to be a full room, but it does need to be a clearly separate area. There are limited exceptions for daycare providers and for storing inventory or product samples.</p>
+<h3>2. It's your principal place of business, or another qualifying use</h3>
+<p>The space must meet one of these:</p>
+<ul>
+<li>It's your <strong>principal place of business</strong>. This includes a home office where you do your administrative or management work, like billing, scheduling and bookkeeping, if you have no other fixed location where you do that work. So a contractor who works on job sites can still qualify.</li>
+<li>You <strong>meet clients or customers</strong> there in the normal course of business.</li>
+<li>It's a <strong>separate structure</strong>, like a detached garage or studio, used for your business.</li>
+</ul>
+
+<h2>Two ways to calculate it</h2>
+{table(["", "Simplified method", "Regular method"], [
+    ["How it works", "$5 per square foot of office space", "The business percentage of your actual home expenses"],
+    ["Maximum", "300 sq ft, which is a $1,500 deduction", "No set cap, but it can't exceed your business income"],
+    ["Expenses included", "Covered by the flat rate", "Mortgage interest or rent, property tax, insurance, utilities, repairs, depreciation"],
+    ["Paperwork", "Minimal", "Form 8829 and detailed records"],
+    ["Depreciation", "None", "Yes, which affects you when you sell"],
+])}
+<p>To find your business percentage for the regular method, divide the office's square footage by your home's total square footage. A 200 sq ft office in a 2,000 sq ft home is 10%. Expenses that apply only to the office, like painting it, are fully deductible.</p>
+<p>You can choose either method each year. The regular method often produces a bigger deduction, especially for renters and people in high-cost homes. The simplified method is far less work.</p>
+
+{callout(P, "business-tax-returns", "We'll figure out whether you qualify, compare both methods and claim the one that saves you more.")}
+
+<h2>The catch: depreciation when you sell</h2>
+<p>Under the regular method, homeowners deduct depreciation on the office portion of the home. When you later sell the home, the depreciation you claimed, or could have claimed, after May 6, 1997 is generally taxable, even if the rest of your gain is tax-free under the home sale exclusion. That's not a reason to skip the deduction, but it should be part of the decision. The simplified method avoids it entirely.</p>
+
+<h2>Own an S-Corp? It works differently</h2>
+<p>If your business is an S-Corp, you're technically an employee of your own company, so you can't claim a home office deduction on Schedule C. Instead, the corporation can <strong>reimburse you</strong> for the business share of your home expenses under a written <strong>accountable plan</strong>. The business deducts the reimbursement, and it isn't taxable income to you. Partners in a partnership may have a similar option, depending on the partnership agreement. (Thinking about becoming an S-Corp? <a href="{P}blog/should-my-llc-elect-s-corp-status/">Here's how to decide</a>.)</p>
+
+<h2>Keep good records</h2>
+<ul>
+<li>Measurements of the office and your whole home</li>
+<li>Photos showing the space is set up only for business</li>
+<li>A year of utility bills, insurance, property tax and mortgage interest or rent statements</li>
+<li>Receipts for repairs or improvements to the office</li>
+</ul>''',
+     "Working From Home?", "Tell us about your setup. We'll reply within 24 hours and help you claim the deduction the right way.")
+
 # ---------------------------------------------------------------- RENDER
 def words(s): return len(strip(s).split())
 
