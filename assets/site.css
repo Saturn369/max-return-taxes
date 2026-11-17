@@ -415,3 +415,13 @@ button{cursor:pointer;border:none;background:none;font:inherit}
   .dl-table td:first-child{font-size:1rem;margin-bottom:6px}
   .dl-table td:not(:first-child)[data-label]:not([data-label=""])::before{content:attr(data-label) ": ";color:var(--gold);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 }
+
+/* Blog topic filters */
+.filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.filter-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border:1px solid var(--border-chrome);border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);background:transparent;transition:color .2s,border-color .2s,background .2s}
+.filter-btn span{font-size:.6875rem;color:var(--text-tertiary);font-weight:500}
+.filter-btn:hover{color:var(--text);border-color:rgba(var(--chrome-rgb),.4)}
+.filter-btn[aria-pressed="true"]{color:#0A0808;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);border-color:var(--gold)}
+.filter-btn[aria-pressed="true"] span{color:rgba(10,8,8,.65)}
+.post-card[hidden]{display:none}
+.filter-empty{color:var(--text-tertiary);font-size:.9375rem}

@@ -5,7 +5,10 @@ ROOT = pathlib.Path(sys.argv[1])
 SITE = "https://saturn369.github.io/max-return-taxes"
 PHONE_TEL, PHONE = "+18609939904", "(860) 993-9904"
 EMAIL = "freedomenka@gmail.com"
-PUBLISHED = "2026-11-17"
+PUBLISHED = "2026-11-17"  # default publish date; pass date="YYYY-MM-DD" to post() for new posts
+# Blog filter topics, keyed by the service page a post links to.
+TOPICS = {"business-tax-returns": ("business", "Business Taxes"), "late-tax-returns": ("late-irs", "Late Filing &amp; IRS"),
+          "amended-tax-returns": ("amendments", "Amendments"), "connecticut-tax-preparer": ("connecticut", "Connecticut")}
 ARROW = '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>'
 FAVICON = ("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23080808%27/%3E"
            "%3Ctext x=%2732%27 y=%2746%27 font-family=%27Georgia,serif%27 font-size=%2740%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23C9A84C%27%3EM%3C/text%3E%3C/svg%3E")
@@ -121,9 +124,13 @@ def table(head_, rows):
 # Each body is HTML using {pre} for the path back to site root ("../../").
 POSTS = []
 
-def post(slug, title, h1, desc, tag, service, excerpt, body, cta_title, cta_sub):
+def post(slug, title, h1, desc, tag, service, excerpt, body, cta_title, cta_sub, date=PUBLISHED):
     POSTS.append(dict(slug=slug, title=title, h1=h1, desc=desc, tag=tag, service=service, excerpt=excerpt,
-                      body=body, cta_title=cta_title, cta_sub=cta_sub))
+                      body=body, cta_title=cta_title, cta_sub=cta_sub, date=date, order=len(POSTS)))
+
+def newest_first(posts):
+    """Sort by publish date, newest first; posts added later win ties."""
+    return sorted(posts, key=lambda p: (p["date"], p["order"]), reverse=True)
 
 P = "../../"
 
@@ -663,7 +670,7 @@ def render_post(p, others):
     mins = max(3, round(words(p["body"]) / 230))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "BlogPosting", "@id": url + "#article", "headline": strip(p["h1"]), "description": p["desc"],
-         "datePublished": PUBLISHED, "dateModified": PUBLISHED, "mainEntityOfPage": url, "image": f"{SITE}/og-image.jpg",
+         "datePublished": p["date"], "dateModified": p["date"], "mainEntityOfPage": url, "image": f"{SITE}/og-image.jpg",
          "author": {"@type": "Organization", "name": "Max Return Taxes", "url": f"{SITE}/"},
          "publisher": {"@id": f"{SITE}/#business"}},
         {"@type": "BreadcrumbList", "itemListElement": [
@@ -682,7 +689,7 @@ def render_post(p, others):
       <nav class="crumbs" aria-label="Breadcrumb"><a href="{P}">Home</a><span aria-hidden="true">/</span><a href="{P}blog/">Blog</a><span aria-hidden="true">/</span><span>{p["tag"]}</span></nav>
       <div class="hero-eyebrow">{p["tag"]}</div>
       <h1 class="page-title article-title">{p["h1"]}</h1>
-      <p class="article-meta"><time datetime="{PUBLISHED}">{human_date(PUBLISHED)}</time><span aria-hidden="true">·</span>{mins} min read<span aria-hidden="true">·</span>Max Return Taxes</p>
+      <p class="article-meta"><time datetime="{p["date"]}">{human_date(p["date"])}</time><span aria-hidden="true">·</span>{mins} min read<span aria-hidden="true">·</span>Max Return Taxes</p>
     </div>
   </header>
 
@@ -707,7 +714,7 @@ def render_post(p, others):
 '''
 
 def post_card(pre, p):
-    return (f'<a class="post-card" href="{pre}blog/{p["slug"]}/"><span class="svc-tag">{p["tag"]}</span>'
+    return (f'<a class="post-card" href="{pre}blog/{p["slug"]}/" data-topic="{TOPICS[p["service"]][0]}"><span class="svc-tag">{p["tag"]}</span>'
             f'<h3 class="post-card-title">{p["h1"]}</h3><p class="post-card-ex">{p["excerpt"]}</p>'
             f'<span class="svc-link">Read article {ARROW}</span></a>')
 
@@ -716,11 +723,17 @@ def render_index():
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Blog", "@id": url + "#blog", "name": "Max Return Taxes Blog", "url": url,
          "publisher": {"@id": f"{SITE}/#business"},
-         "blogPost": [{"@type": "BlogPosting", "headline": strip(p["h1"]), "url": f"{url}{p['slug']}/", "datePublished": PUBLISHED} for p in POSTS]},
+         "blogPost": [{"@type": "BlogPosting", "headline": strip(p["h1"]), "url": f"{url}{p['slug']}/", "datePublished": p["date"]} for p in newest_first(POSTS)]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
             {"@type": "ListItem", "position": 2, "name": "Blog", "item": url}]}]}
-    cards = "".join(post_card(pre, p) for p in POSTS)
+    ordered = newest_first(POSTS)
+    cards = "".join(post_card(pre, p) for p in ordered)
+    counts = {k: sum(1 for p in POSTS if TOPICS[p["service"]][0] == k) for k, _ in TOPICS.values()}
+    btns = f'<button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All <span>{len(POSTS)}</span></button>' + "".join(
+        f'<button type="button" class="filter-btn" data-filter="{k}" aria-pressed="false">{label} <span>{counts[k]}</span></button>'
+        for k, label in TOPICS.values() if counts[k])
+    filters = f'<div class="filter-bar" role="group" aria-label="Filter articles by topic">{btns}</div>'
     return f'''{head(pre, "Tax Tips & Guides for Business Owners | Max Return Taxes Blog",
         "Plain-English guides to business taxes, late and unfiled returns, amended returns, IRS penalties and deadlines — from Max Return Taxes in Hartford County, CT.", url, ld)}
 <body>
@@ -739,13 +752,30 @@ def render_index():
 
   <main>
     <section class="page-section"><div class="container">
-      <div class="post-grid">{cards}</div>
+      {filters}
+      <div class="post-grid" id="posts">{cards}</div>
+      <p class="filter-empty" id="filterEmpty" hidden>No articles in this topic yet.</p>
     </div></section>
     {cta(pre, "Have a Question That's Not Answered Here?", "Send us a message. We'll reply within 24 hours with a straight answer.")}
   </main>
 
   {footer(pre)}
   <script src="{pre}assets/site.js" defer></script>
+  <script>
+  (function(){{
+    var btns=[].slice.call(document.querySelectorAll('.filter-btn')),cards=[].slice.call(document.querySelectorAll('#posts .post-card')),empty=document.getElementById('filterEmpty');
+    function apply(f,push){{
+      if(!btns.some(function(b){{return b.dataset.filter===f}}))f='all';
+      var shown=0;
+      cards.forEach(function(c){{var on=f==='all'||c.dataset.topic===f;c.hidden=!on;if(on)shown++;}});
+      btns.forEach(function(b){{b.setAttribute('aria-pressed',b.dataset.filter===f)}});
+      empty.hidden=shown>0;
+      if(push)history.replaceState(null,'',f==='all'?location.pathname:'#'+f);
+    }}
+    btns.forEach(function(b){{b.addEventListener('click',function(){{apply(b.dataset.filter,true)}})}});
+    apply(location.hash.slice(1)||'all',false);
+  }})();
+  </script>
 </body>
 </html>
 '''
