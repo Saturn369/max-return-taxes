@@ -2,70 +2,13 @@
 import json, re, sys, pathlib, html, datetime
 
 ROOT = pathlib.Path(sys.argv[1])
-SITE = "https://saturn369.github.io/max-return-taxes"
-PHONE_TEL, PHONE = "+18609939904", "(860) 993-9904"
-EMAIL = "freedomenka@gmail.com"
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from common import SITE, PHONE_TEL, PHONE, EMAIL, FAVICON, ARROW, SERVICES, strip, fonts_head, nav, footer
 PUBLISHED = "2026-11-17"  # default publish date; pass date="YYYY-MM-DD" to post() for new posts
 # Blog filter topics, keyed by the service page a post links to.
 TOPICS = {"business-tax-returns": ("business", "Business Taxes"), "late-tax-returns": ("late-irs", "Late Filing &amp; IRS"),
           "amended-tax-returns": ("amendments", "Amendments"), "connecticut-tax-preparer": ("connecticut", "Connecticut")}
-ARROW = '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>'
-FAVICON = ("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23080808%27/%3E"
-           "%3Ctext x=%2732%27 y=%2746%27 font-family=%27Georgia,serif%27 font-size=%2740%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23C9A84C%27%3EM%3C/text%3E%3C/svg%3E")
-SERVICES = {"business-tax-returns": "Business Tax Returns", "late-tax-returns": "Late &amp; Unfiled Returns",
-            "amended-tax-returns": "Amended Returns", "connecticut-tax-preparer": "Hartford County, CT"}
-
-def strip(s): return html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
 def human_date(s): d = datetime.date.fromisoformat(s); return d.strftime("%B ") + str(d.day) + d.strftime(", %Y")
-
-def nav(pre):
-    links = [("Services", f"{pre}#services"), ("Why Us", f"{pre}#why"), ("Process", f"{pre}#process"), ("Blog", f"{pre}blog/"), ("Contact", f"{pre}#contact")]
-    li = "".join(f'<li><a href="{h}">{t}</a></li>' for t, h in links)
-    return f'''<nav class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="{pre}" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
-      <ul class="nav-links" id="navLinks">{li}</ul>
-      <div class="nav-cta">
-        <a href="tel:{PHONE_TEL}" class="btn btn-ghost">Call Now</a>
-        <a href="{pre}#contact" class="btn btn-primary">Get Started</a>
-      </div>
-      <button class="hamburger" id="hbg" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-    </div>
-  </nav>'''
-
-def footer(pre):
-    svc = "".join(f'<li><a href="{pre}{s}/">{t}</a></li>' for s, t in SERVICES.items())
-    return f'''<footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div>
-          <a href="{pre}" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
-          <p class="footer-tagline">Hartford County's premier tax specialists — serving every client across all 50 states with expertise and integrity.</p>
-        </div>
-        <div>
-          <div class="f-col-ttl">Services</div>
-          <ul class="f-links">{svc}</ul>
-        </div>
-        <div>
-          <div class="f-col-ttl">Company</div>
-          <ul class="f-links"><li><a href="{pre}#why">About Us</a></li><li><a href="{pre}#process">How It Works</a></li><li><a href="{pre}blog/">Blog</a></li><li><a href="{pre}#contact">Contact</a></li></ul>
-        </div>
-        <div>
-          <div class="f-col-ttl">Contact</div>
-          <ul class="f-links" style="gap:14px">
-            <li style="color:var(--text-secondary);font-size:.875rem">Hartford County, CT</li>
-            <li style="color:var(--text-secondary);font-size:.875rem">All 50 States Served</li>
-            <li><a href="tel:{PHONE_TEL}">{PHONE}</a></li>
-            <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="f-copy">© 2026 Max Return Taxes · Hartford County, CT · All rights reserved.</div>
-        <div class="f-credit">Motion effects derived from <a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noopener">vue-bits</a> by DavidHDev (MIT)</div>
-      </div>
-    </div>
-  </footer>'''
 
 def head(pre, title, desc, url, ld, og_type="website"):
     t = html.escape(title, quote=True); d = html.escape(desc, quote=True)
@@ -89,9 +32,7 @@ def head(pre, title, desc, url, ld, og_type="website"):
   <meta name="twitter:title" content="{t}">
   <meta name="twitter:description" content="{d}">
   <meta name="twitter:image" content="{SITE}/og-image.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {fonts_head()}
   <link rel="stylesheet" href="{pre}assets/site.css">
   <script type="application/ld+json">
 {json.dumps(ld, indent=2, ensure_ascii=False)}
@@ -951,4 +892,19 @@ for i, p in enumerate(POSTS):
     others = [o for o in POSTS if o["service"] == p["service"] and o is not p] + [o for o in POSTS if o["service"] != p["service"]]
     d = blog / p["slug"]; d.mkdir(exist_ok=True)
     (d / "index.html").write_text(render_post(p, others), encoding="utf-8")
+# ---------------------------------------------------------------- HOMEPAGE "LATEST ARTICLES"
+def latest_section(n=3):
+    cards = "".join(post_card("", p) for p in newest_first(POSTS)[:n])
+    return (f'<section class="page-section page-section-alt latest-posts" id="latest">\n    <div class="container">\n'
+            f'      <div class="latest-head"><div><div class="section-eye">From the Blog</div><h2 class="section-title">Straight Answers on Taxes</h2></div>'
+            f'<a class="svc-link" href="blog/">All articles {ARROW}</a></div>\n'
+            f'      <div class="post-grid">{cards}</div>\n    </div>\n  </section>')
+home = ROOT / "index.html"; h = home.read_text(encoding="utf-8")
+START, END = "<!-- LATEST-POSTS:START (generated by _tools/build_blog.py) -->", "<!-- LATEST-POSTS:END -->"
+if START in h:
+    a = h.index(START) + len(START); b = h.index(END)
+    home.write_text(h[:a] + "\n  " + latest_section() + "\n  " + h[b:], encoding="utf-8")
+else:
+    print("note: homepage has no LATEST-POSTS markers; skipped")
+
 print("posts:", len(POSTS), "| words:", [words(p["body"]) for p in POSTS])

@@ -2,18 +2,11 @@
 import json, re, sys, pathlib, html
 
 ROOT = pathlib.Path(sys.argv[1])
-SITE = "https://saturn369.github.io/max-return-taxes"
-PHONE_TEL, PHONE = "+18609939904", "(860) 993-9904"
-EMAIL = "freedomenka@gmail.com"
-ARROW = '<svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>'
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from common import SITE, PHONE_TEL, PHONE, EMAIL, FAVICON, ARROW, SERVICES, strip, fonts_head, nav, footer, contact_section
 CHECK = '<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>'
-FAVICON = ("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23080808%27/%3E"
-           "%3Ctext x=%2732%27 y=%2746%27 font-family=%27Georgia,serif%27 font-size=%2740%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23C9A84C%27%3EM%3C/text%3E%3C/svg%3E")
 
 PAGES = {}  # slug -> dict
-
-def strip(s):
-    return html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
 
 def cards(items, cls=""):
     out = []
@@ -46,71 +39,8 @@ def faq_html(faqs):
     return '<div class="faq-list">' + "".join(
         f'<details class="faq"><summary>{q}</summary><div class="faq-a">{a}</div></details>' for q, a in faqs) + "</div>"
 
-NAV_LINKS = [("Services", "../#services"), ("Why Us", "../#why"), ("Process", "../#process"), ("Blog", "../blog/"), ("Contact", "../#contact")]
-SERVICE_LINKS = [("business-tax-returns", "Business Tax Returns"), ("late-tax-returns", "Late &amp; Unfiled Returns"),
-                 ("amended-tax-returns", "Amended Returns"), ("connecticut-tax-preparer", "Hartford County, CT")]
-
-def nav():
-    links = "".join(f'<li><a href="{h}">{t}</a></li>' for t, h in NAV_LINKS)
-    return f'''<nav class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="../" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
-      <ul class="nav-links" id="navLinks">{links}</ul>
-      <div class="nav-cta">
-        <a href="tel:{PHONE_TEL}" class="btn btn-ghost">Call Now</a>
-        <a href="../#contact" class="btn btn-primary">Get Started</a>
-      </div>
-      <button class="hamburger" id="hbg" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-    </div>
-  </nav>'''
-
-def footer(prefix="../"):
-    svc = "".join(f'<li><a href="{prefix}{s}/">{t}</a></li>' for s, t in SERVICE_LINKS)
-    return f'''<footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div>
-          <a href="{prefix}" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
-          <p class="footer-tagline">Hartford County's premier tax specialists — serving every client across all 50 states with expertise and integrity.</p>
-        </div>
-        <div>
-          <div class="f-col-ttl">Services</div>
-          <ul class="f-links">{svc}</ul>
-        </div>
-        <div>
-          <div class="f-col-ttl">Company</div>
-          <ul class="f-links"><li><a href="{prefix}#why">About Us</a></li><li><a href="{prefix}#process">How It Works</a></li><li><a href="{prefix}blog/">Blog</a></li><li><a href="{prefix}#contact">Contact</a></li></ul>
-        </div>
-        <div>
-          <div class="f-col-ttl">Contact</div>
-          <ul class="f-links" style="gap:14px">
-            <li style="color:var(--text-secondary);font-size:.875rem">Hartford County, CT</li>
-            <li style="color:var(--text-secondary);font-size:.875rem">All 50 States Served</li>
-            <li><a href="tel:{PHONE_TEL}">{PHONE}</a></li>
-            <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="f-copy">© 2026 Max Return Taxes · Hartford County, CT · All rights reserved.</div>
-        <div class="f-credit">Motion effects derived from <a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noopener">vue-bits</a> by DavidHDev (MIT)</div>
-      </div>
-    </div>
-  </footer>'''
-
-def cta(title, sub):
-    return f'''<section class="cta-section">
-    <div class="container">
-      <div class="cta-eye">Free Consultation</div>
-      <h2 class="cta-title">{title}</h2>
-      <p class="cta-sub">{sub}</p>
-      <div class="cta-actions">
-        <a href="../#contact" class="btn btn-gold btn-lg">Send Us a Message</a>
-        <a href="tel:{PHONE_TEL}" class="btn btn-ghost btn-lg">Call {PHONE}</a>
-      </div>
-      <p class="cta-note">Free consultation · No obligation · We respond within 24 hours</p>
-    </div>
-  </section>'''
+SERVICE_LINKS = list(SERVICES.items())
+DEFAULT_SERVICE = {"business-tax-returns": "Business Tax Return", "late-tax-returns": "Late Filing (1+ years behind)", "amended-tax-returns": "Amendment / Correction"}
 
 def related(slug):
     items = [(s, t) for s, t in SERVICE_LINKS if s != slug]
@@ -151,9 +81,7 @@ def page(slug, p):
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
   <meta name="twitter:image" content="{SITE}/og-image.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {fonts_head()}
   <link rel="stylesheet" href="../assets/site.css">
   <script type="application/ld+json">
 {json.dumps(ld, indent=2, ensure_ascii=False)}
@@ -161,7 +89,7 @@ def page(slug, p):
 </head>
 <body>
   <div class="scroll-progress" id="sp"></div>
-  {nav()}
+  {nav("../")}
 
   <header class="page-hero">
     <div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-vignette"></div>
@@ -181,10 +109,10 @@ def page(slug, p):
   {body}
   {section("Questions", "Frequently Asked Questions", "", faq_html(p["faqs"]), id_="faq")}
   {related(slug)}
-  {cta(p["cta_title"], p["cta_sub"])}
+  {contact_section("../", strip(p["crumb"]) + " page", p["cta_title"], p["cta_sub"], DEFAULT_SERVICE.get(slug, ""))}
   </main>
 
-  {footer()}
+  {footer("../")}
   <script src="../assets/site.js" defer></script>
 </body>
 </html>
@@ -404,3 +332,104 @@ for slug, p in PAGES.items():
     d = ROOT / slug; d.mkdir(exist_ok=True)
     (d / "index.html").write_text(page(slug, p), encoding="utf-8")
 print("pages:", ", ".join(PAGES))
+
+# ---------------------------------------------------------------- PRIVACY POLICY
+PRIVACY_UPDATED = "November 17, 2026"
+PRIVACY_BODY = f'''
+<p>This policy explains what information Max Return Taxes collects through this website, how we use it, and the choices you have. Questions? Email <a href="mailto:{EMAIL}">{EMAIL}</a> or call <a href="tel:{PHONE_TEL}">{PHONE}</a>.</p>
+
+<h2>Information you give us</h2>
+<p>When you use a contact form on this site, we collect what you enter: your name, email address, phone number, state, the service you're interested in and your message. We also receive whatever you share with us directly by email or phone.</p>
+<p>If you become a client, we collect the tax documents and information needed to prepare your returns. That information is handled separately from this website.</p>
+<p><strong>Please don't send Social Security numbers, tax documents or bank details through the website form.</strong> Once we're working together, we'll give you a secure way to share them.</p>
+
+<h2>How contact form submissions are delivered</h2>
+<p>Our contact forms are processed by <a href="https://web3forms.com/privacy" rel="noopener" target="_blank">Web3Forms</a>, a form delivery service that sends your message to our email inbox. Web3Forms handles the data only to deliver it to us.</p>
+
+<h2>How we use your information</h2>
+<ul>
+<li>To respond to your inquiry and give you a quote</li>
+<li>To provide tax preparation and related services if you become a client</li>
+<li>To meet our legal and professional obligations</li>
+</ul>
+<p>We do <strong>not</strong> sell your personal information, and we don't share it with advertisers.</p>
+
+<h2>Tax return information</h2>
+<p>As tax return preparers, we're subject to federal rules that restrict how we use and disclose tax return information. We don't use or disclose your tax return information for any purpose other than preparing your returns without your consent, except as the law permits or requires.</p>
+
+<h2>Website analytics</h2>
+<p>We use <a href="https://www.goatcounter.com/help/privacy" rel="noopener" target="_blank">GoatCounter</a>, a privacy-friendly analytics service, to count page views and clicks on our phone number, email and contact form. GoatCounter doesn't use cookies, doesn't track you across other websites, and doesn't identify individual visitors. We see only totals, like how many people viewed a page, which site they came from, and their general browser, device type and country.</p>
+
+<h2>Other services this site uses</h2>
+<ul>
+<li><strong>Hosting:</strong> this site is hosted on GitHub Pages, which may log technical information such as IP addresses for security and operations. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener" target="_blank">GitHub's privacy statement</a>.</li>
+<li><strong>Fonts:</strong> our fonts are loaded from Google Fonts, so your browser connects to Google's servers. See <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">Google's privacy policy</a>.</li>
+</ul>
+
+<h2>How long we keep information</h2>
+<p>We keep inquiries for as long as needed to respond and follow up, and client records for as long as required by law and professional standards.</p>
+
+<h2>Your choices</h2>
+<p>You can ask us what information we have about you, ask us to correct it, or ask us to delete your inquiry, subject to any records we're legally required to keep. Just email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+
+<h2>Security</h2>
+<p>We take reasonable steps to protect the information you give us. No method of sending information over the internet is completely secure, which is why we ask you not to send sensitive tax documents through the website form.</p>
+
+<h2>Children</h2>
+<p>This website isn't directed at children under 13, and we don't knowingly collect their information through it.</p>
+
+<h2>Changes to this policy</h2>
+<p>If we change this policy, we'll update the date below.</p>
+<p class="article-disclaimer">Last updated: {PRIVACY_UPDATED}</p>
+'''
+
+def simple_page(slug, title, desc, crumb, h1, sub, body):
+    url = f"{SITE}/{slug}/"
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": title, "isPartOf": {"@id": f"{SITE}/#webpage"}},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": crumb, "item": url}]}]}
+    t = html.escape(title, quote=True); d = html.escape(desc, quote=True)
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{t}</title>
+  <meta name="description" content="{d}">
+  <link rel="icon" href="{FAVICON}">
+  <link rel="canonical" href="{url}">
+  {fonts_head()}
+  <link rel="stylesheet" href="../assets/site.css">
+  <script type="application/ld+json">
+{json.dumps(ld, indent=2, ensure_ascii=False)}
+  </script>
+</head>
+<body>
+  <div class="scroll-progress" id="sp"></div>
+  {nav("../")}
+  <header class="page-hero article-hero">
+    <div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-vignette"></div>
+    <div class="container page-hero-content">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span>{crumb}</span></nav>
+      <h1 class="page-title article-title">{h1}</h1>
+      <p class="page-sub">{sub}</p>
+    </div>
+  </header>
+  <main>
+    <section class="page-section"><div class="container"><article class="article-body">{body}</article></div></section>
+  </main>
+  {footer("../")}
+  <script src="../assets/site.js" defer></script>
+</body>
+</html>
+'''
+
+(ROOT / "privacy").mkdir(exist_ok=True)
+(ROOT / "privacy" / "index.html").write_text(simple_page(
+    "privacy", "Privacy Policy | Max Return Taxes",
+    "How Max Return Taxes collects, uses and protects information submitted through this website.",
+    "Privacy Policy", "Privacy Policy", "What we collect through this website, how we use it, and your choices."
+    , PRIVACY_BODY), encoding="utf-8")
+print("privacy page written")

@@ -425,3 +425,25 @@ button{cursor:pointer;border:none;background:none;font:inherit}
 .filter-btn[aria-pressed="true"] span{color:rgba(10,8,8,.65)}
 .post-card[hidden]{display:none}
 .filter-empty{color:var(--text-tertiary);font-size:.9375rem}
+
+/* ===================== PERFORMANCE (homepage hero) =====================
+   Headline renders immediately instead of word-by-word; supporting text fades in quickly. */
+.hero-title .word-inner{opacity:1;transform:none;animation:none!important}
+.hero-eyebrow{animation:fadeUp .5s var(--ease) 0s both}
+.hero-sub{animation:fadeUp .5s var(--ease) .05s both}
+.hero-actions{animation:fadeUp .5s var(--ease) .1s both}
+.hero-loc{animation:fadeUp .5s var(--ease) .15s both}
+.hero-badge{animation:fadeUp .6s var(--ease) .2s both}
+.cursor-glow{display:none}
+.shimmer{animation:none;background-position:0 center}           /* was repainting text every frame */
+@media (max-width:768px){.hero-bg::before,.hero-bg::after{animation:none}}  /* static silk on phones */
+
+/* ===================== CONTACT FORM EXTRAS ===================== */
+.contact-lead{font-size:.9375rem;color:var(--text-secondary);line-height:1.72;margin-bottom:36px}
+.form-note{font-size:.75rem;color:var(--text-tertiary);text-align:center}
+.form-note a,.f-copy a{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px}
+.form-note a:hover,.f-copy a:hover{color:var(--gold)}
+
+/* ===================== HOMEPAGE LATEST ARTICLES ===================== */
+.latest-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.latest-head .section-title{margin-bottom:0}

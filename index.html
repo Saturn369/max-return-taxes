@@ -27,323 +27,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* ===================== CSS VARIABLES ===================== */
-    :root {
-      --bg: #080808;
-      --surface: #0F0F0F;
-      --surface-alt: #141414;
-      --surface-hover: #1A1A1A;
-      --border: rgba(201,168,76,0.12);
-      --border-hover: rgba(201,168,76,0.35);
-      --border-chrome: rgba(155,170,184,0.15);
-      --text: #F2EDE4;
-      --text-secondary: #A8A09A;
-      --text-tertiary: #6B6560;
-      --gold: #C9A84C;
-      --gold-light: #E8C96A;
-      --gold-dim: #9A7E3A;
-      --scarlett: #B91C3A;
-      --scarlett-light: #E0243F;
-      --chrome: #9BAAB8;
-      --chrome-light: #BFC9D4;
-      --bg-rgb: 8,8,8;
-      --gold-rgb: 201,168,76;
-      --scarlett-rgb: 185,28,58;
-      --chrome-rgb: 155,170,184;
-      --success: #3D9A6E;
-      --radius: 8px;
-      --radius-lg: 16px;
-      --container: 1200px;
-      --nav-h: 76px;
-      --ease: cubic-bezier(0.16,1,0.3,1);
-    }
-
-    /* ===================== RESET ===================== */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    [id]{scroll-margin-top:calc(var(--nav-h) + 20px)}
-    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    img{display:block;max-width:100%}
-    a{text-decoration:none;color:inherit}
-    ul{list-style:none}
-    button{cursor:pointer;border:none;background:none;font:inherit}
-
-    /* ===================== SCROLL PROGRESS ===================== */
-    .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--scarlett),var(--gold));z-index:1001;transform-origin:left;transform:scaleX(0)}
-
-    /* ===================== CURSOR GLOW ===================== */
-    .cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(var(--gold-rgb),0.05) 0%,transparent 65%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity .3s;will-change:left,top}
-
-    /* ===================== CONTAINER ===================== */
-    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
-
-    /* ===================== NAV ===================== */
-    .nav{position:fixed;top:0;width:100%;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
-    .nav.scrolled{background:rgba(var(--bg-rgb),.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--border);box-shadow:0 1px 20px rgba(0,0,0,.5)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
-    .logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);display:inline-flex;align-items:center;gap:0}
-    .logo-accent{color:var(--gold)}
-    .logo-sep{width:5px;height:5px;background:var(--scarlett);border-radius:50%;margin:0 5px;display:inline-block;flex-shrink:0}
-    .nav-links{display:flex;align-items:center;gap:32px}
-    .nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);transition:color .2s;position:relative}
-    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a:hover::after{width:100%}
-    .nav-cta{display:flex;align-items:center;gap:10px}
-    .hamburger{display:none;flex-direction:column;gap:5px;padding:4px;cursor:pointer}
-    .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);transition:.3s}
-
-    /* ===================== BUTTONS ===================== */
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:var(--radius);transition:all .25s var(--ease);position:relative;overflow:hidden;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif}
-    .btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.07);opacity:0;transition:opacity .2s}
-    .btn:hover::after{opacity:1}
-    .btn:active{transform:scale(.97)!important}
-    .btn-primary{background:linear-gradient(135deg,var(--scarlett) 0%,#8B1127 100%);color:var(--text);border:1px solid rgba(var(--scarlett-rgb),.4);box-shadow:0 2px 12px rgba(var(--scarlett-rgb),.25),inset 0 1px 0 rgba(255,255,255,.08)}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(var(--scarlett-rgb),.4)}
-    .btn-primary:focus-visible{outline:2px solid var(--scarlett);outline-offset:3px}
-    .btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
-    .btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-dim) 100%);color:#0A0808;border:1px solid var(--gold);box-shadow:0 2px 12px rgba(var(--gold-rgb),.2)}
-    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(var(--gold-rgb),.38);background:linear-gradient(135deg,var(--gold-light) 0%,var(--gold) 100%)}
-    .btn-gold:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-    .btn-gold:disabled{opacity:.5}
-    .btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--border-chrome)}
-    .btn-ghost:hover{color:var(--text);border-color:rgba(var(--chrome-rgb),.4);transform:translateY(-1px)}
-    .btn-ghost:focus-visible{outline:2px solid var(--chrome);outline-offset:3px}
-    .btn-lg{padding:16px 40px;font-size:.875rem;border-radius:10px}
-
-    /* ===================== HERO ===================== */
-    .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:calc(var(--nav-h) + 60px) 0 100px}
-    /* Animated silk-style gradient blobs */
-    .hero-bg{position:absolute;inset:0;z-index:0}
-    .hero-bg::before{content:'';position:absolute;inset:-60%;background:radial-gradient(ellipse 55% 45% at 18% 28%,rgba(var(--scarlett-rgb),.18) 0%,transparent 55%),radial-gradient(ellipse 45% 55% at 80% 72%,rgba(var(--gold-rgb),.09) 0%,transparent 55%),radial-gradient(ellipse 35% 35% at 55% 15%,rgba(var(--scarlett-rgb),.07) 0%,transparent 50%);animation:silkA 20s ease-in-out infinite alternate}
-    .hero-bg::after{content:'';position:absolute;inset:-60%;background:radial-gradient(ellipse 50% 40% at 68% 60%,rgba(var(--gold-rgb),.07) 0%,transparent 50%),radial-gradient(ellipse 40% 50% at 25% 75%,rgba(var(--scarlett-rgb),.08) 0%,transparent 50%);animation:silkB 26s ease-in-out infinite alternate}
-    @keyframes silkA{0%{transform:translate(0,0) scale(1)}40%{transform:translate(3%,2%) scale(1.04)}100%{transform:translate(-2%,4%) scale(.98)}}
-    @keyframes silkB{0%{transform:translate(0,0) scale(1.02)}50%{transform:translate(-3%,-2%) scale(.97)}100%{transform:translate(2%,3%) scale(1.04)}}
-    /* Subtle grid overlay */
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(var(--gold-rgb),.035) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--gold-rgb),.035) 1px,transparent 1px);background-size:80px 80px;z-index:1}
-    /* Vignette */
-    .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 35%,rgba(var(--bg-rgb),.75) 100%);z-index:2}
-    .hero-content{position:relative;z-index:3;max-width:860px}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--ease) .15s both}
-    .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7vw,6.5rem);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--text);margin-bottom:28px}
-    .hero-title .word{display:inline-block;overflow:hidden;vertical-align:bottom}
-    .hero-title .word-inner{display:inline-block;opacity:0;transform:translateY(105%)}
-    .text-gold{background:linear-gradient(135deg,var(--gold-light),var(--gold),#B08830);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
-    .hero-sub{font-size:1.0625rem;color:var(--text-secondary);max-width:540px;line-height:1.72;margin-bottom:44px;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--ease) .75s both}
-    .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--ease) .95s both}
-    .hero-loc{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text-tertiary);letter-spacing:.04em;margin-top:44px;opacity:0;animation:fadeUp .6s var(--ease) 1.2s both}
-    .hero-loc svg{color:var(--scarlett);flex-shrink:0}
-    /* Rotating badge */
-    .hero-badge{position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:3;opacity:0;animation:fadeUp .8s var(--ease) 1.4s both}
-    .badge-ring{width:164px;height:164px;border-radius:50%;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:rgba(var(--gold-rgb),.03);position:relative}
-    .badge-ring::before{content:'';position:absolute;inset:-1px;border-radius:50%;background:conic-gradient(var(--gold) 0deg,var(--scarlett) 120deg,transparent 180deg,var(--gold) 360deg);animation:badgeSpin 8s linear infinite;z-index:-1;mask:radial-gradient(circle at center,transparent calc(100% - 1.5px),white calc(100% - 1.5px));-webkit-mask:radial-gradient(circle at center,transparent calc(100% - 1.5px),white calc(100% - 1.5px))}
-    @keyframes badgeSpin{to{transform:rotate(360deg)}}
-    .badge-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
-    .badge-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-secondary);text-align:center;padding:0 20px;line-height:1.5}
-
-    /* ===================== MARQUEE ===================== */
-    .marquee-wrap{padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:rgba(var(--gold-rgb),.018)}
-    .marquee-track{display:flex;white-space:nowrap;animation:marquee 32s linear infinite;width:max-content}
-    .marquee-track span{font-size:.6875rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-tertiary);padding-right:64px}
-    .marquee-track span em{color:var(--gold);font-style:normal}
-    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-    /* ===================== STATS ===================== */
-    .stats-section{padding:72px 0}
-    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-    .stat-card{padding:40px 28px;text-align:center;background:var(--surface);border-right:1px solid var(--border);transition:background .3s}
-    .stat-card:last-child{border-right:none}
-    .stat-card:hover{background:var(--surface-hover)}
-    .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.25rem;font-weight:700;line-height:1;color:var(--gold);margin-bottom:10px}
-    .stat-num .suf{font-size:2rem}
-    .stat-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary)}
-
-    /* ===================== SECTION COMMONS ===================== */
-    .section-eye{display:inline-flex;align-items:center;gap:10px;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-    .section-eye::before{content:'';width:24px;height:1px;background:var(--gold)}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.2rem);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--text);margin-bottom:18px}
-    .section-sub{font-size:1rem;color:var(--text-secondary);max-width:520px;line-height:1.72;margin-bottom:52px}
-    /* Gold shimmer on highlight spans */
-    .shimmer{background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 30%,#FFFAEF 50%,var(--gold-light) 70%,var(--gold) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
-    @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-
-    /* ===================== SERVICES ===================== */
-    .services-section{padding:96px 0}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-    /* SpotlightCard */
-    .sc{position:relative;padding:40px 36px;background:var(--surface);border-right:1px solid var(--border);overflow:hidden;transition:background .3s}
-    .sc:last-child{border-right:none}
-    .sc::before{content:'';position:absolute;inset:0;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(var(--gold-rgb),.07) 0%,transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:0}
-    .sc:hover::before{opacity:1}
-    .sc:hover{background:var(--surface-hover)}
-    .svc-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--scarlett);background:rgba(var(--scarlett-rgb),.1);border:1px solid rgba(var(--scarlett-rgb),.2);border-radius:4px;padding:3px 8px;margin-bottom:14px;position:relative;z-index:1}
-    .svc-icon{width:48px;height:48px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;z-index:1;background:rgba(var(--gold-rgb),.04);transition:border-color .3s,background .3s}
-    .sc:hover .svc-icon{border-color:rgba(var(--gold-rgb),.3);background:rgba(var(--gold-rgb),.08)}
-    .svc-icon svg{color:var(--gold)}
-    .svc-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:12px;position:relative;z-index:1;line-height:1.25}
-    .svc-desc{font-size:.875rem;color:var(--text-secondary);line-height:1.65;margin-bottom:28px;position:relative;z-index:1}
-    .svc-link{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);position:relative;z-index:1;transition:gap .3s var(--ease),color .2s}
-    .svc-link svg{transition:transform .3s var(--ease)}
-    .svc-link:hover{color:var(--gold-light);gap:12px}
-    .svc-link:hover svg{transform:translateX(4px)}
-
-    /* ===================== BENTO (Why Us) ===================== */
-    .why-section{padding:96px 0;background:var(--surface-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-    .bc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s}
-    .bc:hover{border-color:rgba(var(--gold-rgb),.25);box-shadow:0 4px 24px rgba(0,0,0,.35)}
-    /* GlareHover sweep */
-    .bc::before{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(var(--gold-rgb),.045) 50%,transparent 60%);transform:translateX(-100%);transition:transform 0s;pointer-events:none}
-    .bc:hover::before{transform:translateX(100%);transition:transform .55s ease}
-    .bc-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:10px;position:relative;z-index:1}
-    .bc-body{font-size:.875rem;color:var(--text-secondary);line-height:1.65;position:relative;z-index:1}
-    .bc-icon{font-size:1.75rem;margin-bottom:18px;position:relative;z-index:1;line-height:1}
-    .bc-num{font-family:'Cormorant Garamond',serif;font-size:3.75rem;font-weight:700;line-height:1;margin-bottom:10px;color:var(--gold);position:relative;z-index:1}
-    .s5{grid-column:span 5}
-    .s7{grid-column:span 7}
-    .s4{grid-column:span 4}
-    .s3{grid-column:span 3}
-    .s6{grid-column:span 6}
-    .bc-gold{border-color:rgba(var(--gold-rgb),.2);background:linear-gradient(140deg,rgba(var(--gold-rgb),.05) 0%,var(--surface) 55%)}
-    .bc-scarlett{border-color:rgba(var(--scarlett-rgb),.18);background:linear-gradient(140deg,rgba(var(--scarlett-rgb),.06) 0%,var(--surface) 55%)}
-    .bc-chrome{border-color:rgba(var(--chrome-rgb),.18)}
-
-    /* ===================== PROCESS ===================== */
-    .process-section{padding:96px 0}
-    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative}
-    .process-grid::before{content:'';position:absolute;top:36px;left:calc(16.666% + 36px);right:calc(16.666% + 36px);height:1px;background:linear-gradient(90deg,var(--gold),var(--scarlett),var(--gold));opacity:.3}
-    .p-step{text-align:center}
-    .p-num{width:72px;height:72px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:var(--gold);background:var(--surface);position:relative;z-index:1;transition:border-color .3s,background .3s}
-    .p-step:hover .p-num{border-color:var(--gold);background:rgba(var(--gold-rgb),.08)}
-    .p-title{font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:var(--text);margin-bottom:10px}
-    .p-body{font-size:.875rem;color:var(--text-secondary);line-height:1.65}
-
-    /* ===================== TESTIMONIALS ===================== */
-    .testi-section{padding:96px 0;background:var(--surface-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
-    .testi-track{display:flex;gap:18px;margin-top:44px;animation:testiScroll 42s linear infinite;width:max-content}
-    .testi-track:hover{animation-play-state:paused}
-    @keyframes testiScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .tc{width:340px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:border-color .3s}
-    .tc:hover{border-color:rgba(var(--gold-rgb),.25)}
-    .tc-stars{display:flex;gap:3px;margin-bottom:14px}
-    .tc-stars svg{color:var(--gold)}
-    .tc-text{font-size:.875rem;color:var(--text-secondary);line-height:1.72;margin-bottom:20px;font-style:italic}
-    .tc-author{display:flex;align-items:center;gap:12px}
-    .tc-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--scarlett),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:white;flex-shrink:0}
-    .tc-name{font-size:.8125rem;font-weight:600;color:var(--text)}
-    .tc-role{font-size:.75rem;color:var(--text-tertiary)}
-
-    /* ===================== CTA BANNER ===================== */
-    .cta-section{padding:120px 0;text-align:center;position:relative;overflow:hidden}
-    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(var(--scarlett-rgb),.07) 0%,transparent 70%)}
-    .cta-eye{display:inline-flex;align-items:center;gap:8px;font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
-    .cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:600;line-height:1.1;color:var(--text);max-width:680px;margin:0 auto 18px;position:relative;z-index:1}
-    .cta-sub{font-size:1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 44px;line-height:1.65;position:relative;z-index:1}
-    .cta-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
-    .cta-note{margin-top:20px;font-size:.72rem;color:var(--text-tertiary);letter-spacing:.04em;position:relative;z-index:1}
-
-    /* ===================== CONTACT ===================== */
-    .contact-section{padding:96px 0;background:var(--surface-alt);border-top:1px solid var(--border)}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-    .contact-info{display:flex;flex-direction:column;gap:28px}
-    .ci{display:flex;align-items:flex-start;gap:16px}
-    .ci-icon{width:44px;height:44px;border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(var(--gold-rgb),.04)}
-    .ci-icon svg{color:var(--gold)}
-    .ci-label{font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-    .ci-val{font-size:.9375rem;color:var(--text);line-height:1.5}
-    .ci-sub{color:var(--text-secondary);font-size:.875rem}
-    .contact-form{display:flex;flex-direction:column;gap:14px}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .fg{display:flex;flex-direction:column;gap:6px}
-    .flabel{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary)}
-    .fi,.fs,.fta{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;font-size:.9375rem;color:var(--text);font-family:'Inter',sans-serif;transition:border-color .2s,box-shadow .2s;outline:none;width:100%}
-    .fi::placeholder,.fta::placeholder{color:var(--text-tertiary)}
-    .fi:focus,.fs:focus,.fta:focus{border-color:rgba(var(--gold-rgb),.5);box-shadow:0 0 0 3px rgba(var(--gold-rgb),.08)}
-    .fs{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B6560' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
-    .fs option{background:var(--surface-alt);color:var(--text)}
-    .fta{resize:vertical;min-height:110px}
-
-    /* ===================== FOOTER ===================== */
-    .footer{padding:60px 0 32px;border-top:1px solid var(--border)}
-    .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-    .footer-tagline{font-size:.875rem;color:var(--text-secondary);line-height:1.65;max-width:240px;margin:14px 0 20px}
-    .f-socials{display:flex;gap:10px}
-    .f-soc{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-tertiary);transition:color .2s,border-color .2s}
-    .f-soc:hover{color:var(--gold);border-color:rgba(var(--gold-rgb),.3)}
-    .f-col-ttl{font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:14px}
-    .f-links{display:flex;flex-direction:column;gap:10px}
-    .f-links a{font-size:.875rem;color:var(--text-secondary);transition:color .2s}
-    .f-links a:hover{color:var(--gold)}
-    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
-    .f-copy{font-size:.72rem;color:var(--text-tertiary);letter-spacing:.03em}
-    .f-credit{font-size:.6875rem;color:var(--text-tertiary)}
-    .f-credit a{color:var(--gold-dim);text-decoration:underline;text-underline-offset:3px}
-
-    /* ===================== SCROLL REVEAL ===================== */
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-    .reveal.in-view{opacity:1;transform:none}
-    .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-    .stagger.in-view > *:nth-child(1){opacity:1;transform:none;transition-delay:0s}
-    .stagger.in-view > *:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
-    .stagger.in-view > *:nth-child(3){opacity:1;transform:none;transition-delay:.2s}
-    .stagger.in-view > *:nth-child(4){opacity:1;transform:none;transition-delay:.3s}
-    .stagger.in-view > *:nth-child(5){opacity:1;transform:none;transition-delay:.4s}
-
-    /* ===================== KEYFRAMES ===================== */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-    @keyframes wordIn{from{opacity:0;transform:translateY(105%)}to{opacity:1;transform:none}}
-
-    /* ===================== FOCUS RING ===================== */
-    :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-
-    /* ===================== REDUCED MOTION ===================== */
-    @media (prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-      html{scroll-behavior:auto}
-      .reveal,.stagger>*{opacity:1;transform:none}
-    }
-
-    /* ===================== RESPONSIVE ===================== */
-    @media (max-width:1024px){
-      .s5{grid-column:span 6}.s7{grid-column:span 6}.s4{grid-column:span 6}.s3{grid-column:span 6}
-      .footer-top{grid-template-columns:1fr 1fr;gap:32px}
-      .hero-badge{display:none}
-    }
-    @media (max-width:768px){
-      :root{--nav-h:64px}
-      .nav-links{display:none}
-      .nav-cta .btn-ghost{display:none}
-      .hamburger{display:flex}
-      .services-grid{grid-template-columns:1fr}
-      .sc{border-right:none;border-bottom:1px solid var(--border)}
-      .sc:last-child{border-bottom:none}
-      .stats-grid{grid-template-columns:1fr 1fr}
-      .stat-card:nth-child(2){border-right:none}
-      .stat-card:nth-child(3){border-right:1px solid var(--border);border-top:1px solid var(--border)}
-      .stat-card:nth-child(4){border-right:none;border-top:1px solid var(--border)}
-      .bento [class*="s"]{grid-column:span 12!important}
-      .process-grid{grid-template-columns:1fr;gap:36px}
-      .process-grid::before{display:none}
-      .contact-grid{grid-template-columns:1fr;gap:48px}
-      .form-row{grid-template-columns:1fr}
-      .footer-top{grid-template-columns:1fr}
-      .footer-bottom{flex-direction:column;align-items:flex-start}
-      .hero-actions{flex-direction:column;align-items:flex-start}
-      .cta-actions{flex-direction:column;align-items:center}
-    }
-    @media (max-width:480px){
-      .container{padding:0 16px}
-      .stats-grid{grid-template-columns:1fr}
-      .stat-card{border-right:none;border-bottom:1px solid var(--border)}
-    }
-    /* ===================== MOBILE NAV FIT ===================== */
-    .logo{white-space:nowrap}
-    @media (max-width:480px){.logo{font-size:1.05rem;letter-spacing:.05em}.nav-cta .btn-primary{padding:10px 14px;font-size:.72rem}}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -469,7 +154,6 @@
 <body>
 
   <div class="scroll-progress" id="sp"></div>
-  <div class="cursor-glow" id="cg"></div>
 
   <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
@@ -487,7 +171,7 @@
         <a href="tel:+18609939904" class="btn btn-ghost">Call Now</a>
         <a href="#contact" class="btn btn-primary magnetic">Get Started</a>
       </div>
-      <button class="hamburger" id="hbg" aria-label="Open menu">
+      <button class="hamburger" id="hbg" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -708,6 +392,15 @@
     </div>
   </section>
 
+  <!-- LATEST-POSTS:START (generated by _tools/build_blog.py) -->
+  <section class="page-section page-section-alt latest-posts" id="latest">
+    <div class="container">
+      <div class="latest-head"><div><div class="section-eye">From the Blog</div><h2 class="section-title">Straight Answers on Taxes</h2></div><a class="svc-link" href="blog/">All articles <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a></div>
+      <div class="post-grid"><a class="post-card" href="blog/starting-a-business-in-connecticut-taxes/" data-topic="connecticut"><span class="svc-tag">Connecticut</span><h3 class="post-card-title">Starting a Business in Connecticut: The Tax Checklist</h3><p class="post-card-ex">The federal and Connecticut registrations, permits and filings to get right from day one.</p><span class="svc-link">Read article <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span></a><a class="post-card" href="blog/connecticut-pass-through-entity-tax/" data-topic="connecticut"><span class="svc-tag">Connecticut</span><h3 class="post-card-title">Connecticut's Pass-Through Entity Tax: Should Your Business Elect It?</h3><p class="post-card-ex">It's now optional. For some business owners it saves federal tax, and for others it's not worth it.</p><span class="svc-link">Read article <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span></a><a class="post-card" href="blog/how-to-amend-a-business-tax-return/" data-topic="amendments"><span class="svc-tag">Amendments</span><h3 class="post-card-title">How to Amend a Business Tax Return: S-Corps, Partnerships and C-Corps</h3><p class="post-card-ex">Each business type is corrected differently, and partnerships follow very different rules. Here's how it works.</p><span class="svc-link">Read article <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span></a></div>
+    </div>
+  </section>
+  <!-- LATEST-POSTS:END -->
+
   <!-- ===== CTA ===== -->
   <section class="cta-section">
     <div class="container">
@@ -753,30 +446,25 @@
           </div>
         </div>
 
-        <form class="contact-form" id="cForm" action="https://api.web3forms.com/submit" method="POST">
+        <form class="contact-form" id="cForm" action="https://api.web3forms.com/submit" method="POST" data-page="Homepage">
           <input type="hidden" name="access_key" value="2ea0597a-db8d-4862-8478-9f10b581dc0f">
-          <input type="hidden" name="subject" value="New inquiry — Max Return Taxes website">
+          <input type="hidden" name="subject" value="New inquiry — Homepage">
           <input type="hidden" name="from_name" value="Max Return Taxes Website">
+          <input type="hidden" name="page" value="Homepage">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
-            <div class="fg"><label class="flabel" for="fn">First Name</label><input class="fi" type="text" id="fn" name="first_name" placeholder="John" required></div>
-            <div class="fg"><label class="flabel" for="ln">Last Name</label><input class="fi" type="text" id="ln" name="last_name" placeholder="Smith" required></div>
+            <div class="fg"><label class="flabel" for="fn">First Name</label><input class="fi" type="text" id="fn" name="first_name" autocomplete="given-name" required></div>
+            <div class="fg"><label class="flabel" for="ln">Last Name</label><input class="fi" type="text" id="ln" name="last_name" autocomplete="family-name" required></div>
           </div>
-          <div class="fg"><label class="flabel" for="em">Email Address</label><input class="fi" type="email" id="em" name="email" placeholder="john@company.com" required></div>
+          <div class="fg"><label class="flabel" for="em">Email Address</label><input class="fi" type="email" id="em" name="email" autocomplete="email" required></div>
           <div class="form-row">
-            <div class="fg"><label class="flabel" for="ph">Phone</label><input class="fi" type="tel" id="ph" name="phone" placeholder="(555) 000-0000"></div>
-            <div class="fg"><label class="flabel" for="st">Your State</label>
-              <select class="fs" id="st" name="state"><option value="">Select state...</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
-            </div>
+            <div class="fg"><label class="flabel" for="ph">Phone</label><input class="fi" type="tel" id="ph" name="phone" autocomplete="tel"></div>
+            <div class="fg"><label class="flabel" for="st">Your State</label><select class="fs" id="st" name="state"><option value="">Select state...</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select></div>
           </div>
-          <div class="fg"><label class="flabel" for="sv">Service Needed</label>
-            <select class="fs" id="sv" name="service"><option value="">Select a service...</option><option>Business Tax Return</option><option>Late Filing (1+ years behind)</option><option>Amendment / Correction</option><option>Individual Tax Return</option><option>IRS Audit Support</option><option>Multiple Services</option></select>
-          </div>
+          <div class="fg"><label class="flabel" for="sv">Service Needed</label><select class="fs" id="sv" name="service"><option value="">Select a service...</option><option>Business Tax Return</option><option>Late Filing (1+ years behind)</option><option>Amendment / Correction</option><option>Individual Tax Return</option><option>IRS Audit Support</option><option>Multiple Services</option></select></div>
           <div class="fg"><label class="flabel" for="msg">Tell Us More</label><textarea class="fta" id="msg" name="message" placeholder="Briefly describe your tax situation..."></textarea></div>
-          <button type="submit" class="btn btn-primary btn-lg magnetic" style="justify-content:center">
-            Send Message
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.269 20.876L5.999 12zm0 0h7.5"/></svg>
-          </button>
+          <button type="submit" class="btn btn-primary btn-lg" style="justify-content:center">Send Message <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.269 20.876L5.999 12zm0 0h7.5"/></svg></button>
+          <p class="form-note">We reply within 24 hours. See our <a href="privacy/">privacy policy</a>.</p>
         </form>
 
       </div>
@@ -788,16 +476,16 @@
     <div class="container">
       <div class="footer-top">
         <div>
-          <a href="#" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
+          <a href="./" class="logo">Max Return<span class="logo-sep"></span><span class="logo-accent">Taxes</span></a>
           <p class="footer-tagline">Hartford County's premier tax specialists — serving every client across all 50 states with expertise and integrity.</p>
         </div>
         <div>
           <div class="f-col-ttl">Services</div>
-          <ul class="f-links"><li><a href="business-tax-returns/">Business Tax Returns</a></li><li><a href="late-tax-returns/">Late Filings</a></li><li><a href="amended-tax-returns/">Amendments</a></li><li><a href="connecticut-tax-preparer/">Hartford County, CT</a></li><li><a href="#contact">Individual Returns</a></li><li><a href="#contact">Audit Support</a></li></ul>
+          <ul class="f-links"><li><a href="business-tax-returns/">Business Tax Returns</a></li><li><a href="late-tax-returns/">Late &amp; Unfiled Returns</a></li><li><a href="amended-tax-returns/">Amended Returns</a></li><li><a href="connecticut-tax-preparer/">Hartford County, CT</a></li></ul>
         </div>
         <div>
           <div class="f-col-ttl">Company</div>
-          <ul class="f-links"><li><a href="#why">About Us</a></li><li><a href="#process">How It Works</a></li><li><a href="#reviews">Reviews</a></li><li><a href="blog/">Blog</a></li><li><a href="#contact">Contact</a></li></ul>
+          <ul class="f-links"><li><a href="#why">About Us</a></li><li><a href="#process">How It Works</a></li><li><a href="blog/">Blog</a></li><li><a href="#contact">Contact</a></li></ul>
         </div>
         <div>
           <div class="f-col-ttl">Contact</div>
@@ -810,33 +498,15 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="f-copy">© 2026 Max Return Taxes · Hartford County, CT · All rights reserved.</div>
+        <div class="f-copy">© 2026 Max Return Taxes · Hartford County, CT · All rights reserved. · <a href="privacy/">Privacy Policy</a></div>
         <div class="f-credit">Motion effects derived from <a href="https://github.com/DavidHDev/vue-bits" target="_blank" rel="noopener">vue-bits</a> by DavidHDev (MIT)</div>
       </div>
     </div>
   </footer>
 
   <script>
-  // Scroll progress bar
-  const sp=document.getElementById('sp');
-  window.addEventListener('scroll',()=>{sp.style.transform=`scaleX(${Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight),1)})`;},{passive:true});
-
-  // Nav scroll state
-  const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
-
-  // Cursor glow (desktop only)
-  if(window.matchMedia('(hover:hover)').matches){
-    const cg=document.getElementById('cg');let raf;
-    document.addEventListener('mousemove',e=>{if(raf)return;raf=requestAnimationFrame(()=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';raf=null;});});
-  }
-
-  // Hero title word-by-word entrance
-  document.querySelectorAll('.hero-title .word-inner').forEach((el,i)=>{
-    el.style.animation=`wordIn .85s cubic-bezier(.16,1,.3,1) ${.28+i*.16}s both`;
-  });
-
-  // Scroll reveal (IntersectionObserver)
+  // Homepage-only effects. Nav, menu, forms and analytics live in assets/site.js.
+  // Scroll reveal
   const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');revObs.unobserve(e.target);}});},{threshold:.12});
   document.querySelectorAll('.reveal,.stagger').forEach(el=>revObs.observe(el));
 
@@ -861,7 +531,7 @@
   const cuObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.end);cuObs.unobserve(e.target);}});},{threshold:.5});
   document.querySelectorAll('.cu').forEach(el=>cuObs.observe(el));
 
-  // Magnetic buttons
+  // Magnetic buttons (desktop only)
   if(window.matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.magnetic').forEach(b=>{
       b.addEventListener('mousemove',e=>{
@@ -872,41 +542,7 @@
       b.addEventListener('mouseleave',()=>b.style.transform='');
     });
   }
-
-  // Form submit -> Web3Forms (delivers to email)
-  document.getElementById('cForm').addEventListener('submit',async e=>{
-    e.preventDefault();
-    const f=e.target,btn=f.querySelector('button[type=submit]'),orig=btn.innerHTML;
-    btn.disabled=true;btn.innerHTML='Sending...';
-    const show=(html,bg)=>{btn.innerHTML=html;btn.style.background=bg;setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;btn.style.background='';},5000);};
-    try{
-      const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),15000);
-      const r=await fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f),signal:ctl.signal});
-      clearTimeout(t);
-      const d=await r.json().catch(()=>({}));
-      if(!r.ok||d.success!==true)throw new Error(d.message||r.status);
-      f.reset();
-      show('<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Message Sent!','linear-gradient(135deg,#3D9A6E,#2A7A54)');
-    }catch(err){
-      show('Could not send — please call (860) 993-9904','linear-gradient(135deg,#7a1a1a,#4a1010)');
-    }
-  });
-
-  // Hamburger menu
-  const hbg=document.getElementById('hbg');const nl=document.getElementById('navLinks');let open=false;
-  hbg.addEventListener('click',()=>{
-    open=!open;
-    if(open){
-      nl.style.cssText='display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);padding:24px;gap:20px;border-bottom:1px solid var(--border);z-index:99';
-      hbg.children[0].style.transform='rotate(45deg) translate(4.5px,4.5px)';
-      hbg.children[1].style.opacity='0';
-      hbg.children[2].style.transform='rotate(-45deg) translate(4.5px,-4.5px)';
-    }else{
-      nl.style.cssText='display:none';
-      [0,1,2].forEach(i=>hbg.children[i].style.cssText='');
-    }
-  });
-  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;nl.style.cssText='display:none';[0,1,2].forEach(i=>hbg.children[i].style.cssText='');}));
   </script>
+  <script src="assets/site.js" defer></script>
 </body>
 </html>
