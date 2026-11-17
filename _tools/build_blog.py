@@ -461,6 +461,200 @@ post("home-office-deduction",
 </ul>''',
      "Working From Home?", "Tell us about your setup. We'll reply within 24 hours and help you claim the deduction the right way.")
 
+post("quarterly-estimated-taxes-self-employed",
+     "Quarterly Estimated Taxes for the Self-Employed: Who Pays, When & How Much | Max Return Taxes",
+     "Quarterly Estimated Taxes: Who Has to Pay, When, and How Much",
+     "Who has to make quarterly estimated tax payments, the 2027 due dates, the safe harbor rules that avoid the underpayment penalty, and how to pay.",
+     "Self-Employed", "business-tax-returns",
+     "The 2027 due dates, the safe-harbor rules that keep you penalty-free, and a payroll trick for S-Corp owners.",
+     f'''<p>When you work for an employer, tax comes out of every paycheck. When you work for yourself, nobody withholds it for you. The IRS still expects to be paid during the year, not all at once in April. That's what quarterly estimated taxes are for.</p>
+
+<h2>Who has to pay estimated taxes</h2>
+<p>You generally need to make estimated payments if you expect to owe <strong>$1,000 or more</strong> when you file your return, after subtracting withholding and refundable credits. That usually includes:</p>
+<ul>
+<li>Sole proprietors, freelancers and independent contractors</li>
+<li>Partners and LLC members who receive business income</li>
+<li>S-Corp owners whose payroll withholding doesn't cover their taxes on business profit</li>
+<li>Anyone with significant investment, rental or other income that has no withholding</li>
+</ul>
+<p>Corporations have their own estimated tax rules and generally must pay if they expect to owe $500 or more.</p>
+
+<h2>2027 due dates</h2>
+{table(["Payment", "Covers income earned", "Due date"], [
+    ["1st quarter", "January 1 – March 31", "Thursday, April 15, 2027"],
+    ["2nd quarter", "April 1 – May 31", "Tuesday, June 15, 2027"],
+    ["3rd quarter", "June 1 – August 31", "Wednesday, September 15, 2027"],
+    ["4th quarter", "September 1 – December 31", "Tuesday, January 18, 2028"],
+])}
+<p>Despite the name, the "quarters" aren't equal: the second covers only two months and the fourth covers four. (See all the year's business dates in our <a href="{P}blog/2027-business-tax-deadlines/">2027 deadline calendar</a>.)</p>
+
+<h2>How much to pay: the safe harbor rules</h2>
+<p>You avoid the underpayment penalty if your withholding and estimated payments, paid on time, add up to at least the <strong>smaller</strong> of:</p>
+<ul>
+<li><strong>90% of this year's tax</strong>, or</li>
+<li><strong>100% of last year's tax</strong>, or <strong>110%</strong> if last year's adjusted gross income was over $150,000 ($75,000 if married filing separately)</li>
+</ul>
+<p>The prior-year rule is the easiest to plan around. Take last year's total tax, divide it by four, and pay that each quarter. Even if your income jumps, you won't owe a penalty, though you'll still owe the difference when you file.</p>
+
+{callout(P, "business-tax-returns", "We'll calculate your quarterly payments when we prepare your return, so you know exactly what to pay and when.")}
+
+<h2>What happens if you underpay</h2>
+<p>If you pay too little or too late, the IRS charges an underpayment penalty, figured on Form 2210. It works like interest: it's based on how much was short and for how long, at the IRS underpayment rate. Catching up with a bigger payment later in the year reduces the penalty from that point on.</p>
+<p>If your income is uneven, such as a business that earns most of its money late in the year, the <strong>annualized income method</strong> can lower or eliminate the penalty for earlier quarters.</p>
+
+<h2>A tip for S-Corp owners and side-gig workers</h2>
+<p>Federal income tax <strong>withholding</strong> is treated as if it were paid evenly throughout the year, no matter when it was actually withheld. So if you're behind on estimates, raising the withholding on your S-Corp salary, or on a W-2 job, late in the year can fill the gap and avoid the penalty in a way a late estimated payment can't.</p>
+
+<h2>How to pay</h2>
+<ul>
+<li><strong>IRS Direct Pay</strong>, free from your bank account at irs.gov</li>
+<li>Your <strong>IRS Online Account</strong>, where you can also see payments you've already made</li>
+<li><strong>EFTPS</strong>, the Treasury's free electronic payment system</li>
+<li>Debit or credit card, through approved processors that charge a fee</li>
+<li>A check with a Form 1040-ES payment voucher</li>
+</ul>
+
+<h2>Don't forget your state</h2>
+<p>Most states with an income tax, including Connecticut, have their own estimated payment requirements. Connecticut residents use Form CT-1040ES.</p>''',
+     "Want Your Quarterly Payments Figured Out?", "Tell us about your income. We'll reply within 24 hours and help you set up a payment plan that keeps you penalty-free.")
+
+post("irs-notice-what-to-do",
+     "Got a Letter From the IRS? What Common Notices Mean & What to Do | Max Return Taxes",
+     "Got a Letter From the IRS? What It Means and What to Do",
+     "What common IRS notices like the CP2000, CP14, CP59, CP504 and final notice of intent to levy mean, how to respond, deadlines that matter, and how to spot scams.",
+     "IRS Notices", "late-tax-returns",
+     "How to read the notice number, which letters are urgent, and the deadlines you really can't miss.",
+     f'''<p>An envelope from the IRS is enough to ruin anyone's day. But most IRS letters are routine, and almost all of them can be resolved if you respond on time. The worst thing you can do is put it in a drawer.</p>
+
+<h2>Step 1: Make sure it's real</h2>
+<p>The IRS generally starts contact <strong>by mail</strong>. It doesn't open conversations by text message, email or social media, and it never demands payment by gift card, cryptocurrency or wire transfer. If you're unsure whether a letter is real, don't call the number on the letter. Look up the IRS's contact information on irs.gov, or check for the notice in your IRS Online Account.</p>
+
+<h2>Step 2: Find the notice number and the deadline</h2>
+<p>Look in the top or bottom right corner for a code like <strong>CP2000</strong> or <strong>LT11</strong>. That number tells you exactly what kind of letter it is. Then find the response date. Many deadlines are firm, and missing one can cost you rights you can't get back.</p>
+
+<h2>Common notices and what they mean</h2>
+{table(["Notice", "What it means", "What to do"], [
+    ["CP2000", "Income reported to the IRS doesn't match your return, so the IRS is proposing a change. It's not a bill yet.", "Agree, or disagree with documents, by the response date"],
+    ["CP14", "You have a balance due.", "Pay, or set up a payment plan if you can't pay in full"],
+    ["CP59", "The IRS has no record of a return it expected from you.", "File the return, or show that you already filed or didn't need to"],
+    ["CP501 / CP503", "Reminders that a balance is still unpaid.", "Pay or arrange a plan before it escalates"],
+    ["CP504", "Notice of intent to levy. The IRS can take your state tax refund and move toward other collection.", "Act now: pay, set up a plan or get help"],
+    ["LT11 / Letter 1058", "Final notice of intent to levy, with your right to a hearing.", "You generally have 30 days to request a Collection Due Process hearing"],
+    ["Notice of Deficiency", "The IRS's formal determination that you owe more tax.", "You generally have 90 days to petition the U.S. Tax Court, a deadline that can't be extended"],
+])}
+
+{callout(P, "late-tax-returns", "Got a notice about unfiled returns or a balance due? Send it to us. We'll explain it in plain English and help you respond.")}
+
+<h2>Step 3: Respond, even if you disagree</h2>
+<ul>
+<li><strong>If the IRS is right,</strong> pay what you can by the deadline. If you can't pay in full, ask for a payment plan. That stops more serious collection action.</li>
+<li><strong>If the IRS is wrong,</strong> say so in writing with copies of supporting documents, not originals, by the response date. Proposed changes like a CP2000 are often reduced or dropped once the IRS sees the full picture, like the cost basis of stock you sold.</li>
+<li><strong>If you need more time,</strong> contact the IRS before the deadline. Short extensions are often available for routine notices, but not for court deadlines.</li>
+</ul>
+
+<h2>Step 4: Keep a paper trail</h2>
+<p>Keep a copy of the notice, everything you send back and proof of when you sent it, such as certified mail. Write down the date, name and ID number of anyone you speak with at the IRS.</p>
+
+<h2>Notices about unfiled returns</h2>
+<p>If a notice says the IRS has no record of a return, or that it prepared one for you, filing your own accurate return is usually the best response. A return the IRS prepares often leaves out deductions and credits you're entitled to. (Read <a href="{P}blog/havent-filed-taxes-in-years/">what happens when you haven't filed</a>.)</p>''',
+     "Don't Face an IRS Letter Alone", "Send us a copy of your notice. We'll reply within 24 hours, explain what it means and walk you through your options.")
+
+post("s-corp-reasonable-salary",
+     "S-Corp Reasonable Salary: How Much Should You Pay Yourself? | Max Return Taxes",
+     "S-Corp Reasonable Salary: How Much Should You Pay Yourself?",
+     "How the IRS reasonable compensation rule works for S-Corp owners, factors that determine a reasonable salary, risks of paying too little, and how salary affects QBI and retirement.",
+     "Business Taxes", "business-tax-returns",
+     "Why a $0 salary is a red flag, what the IRS looks at, and how your salary ripples through the rest of your taxes.",
+     f'''<p>The main tax benefit of an S-Corp is that profits paid out as distributions aren't subject to self-employment tax. Your salary is. So every S-Corp owner faces the same question: how much salary do I have to pay myself? The IRS's answer is "reasonable compensation," and getting it wrong can erase the benefit of the S-Corp.</p>
+
+<h2>The rule</h2>
+<p>If you're a shareholder who works in your S-Corp, the IRS expects you to pay yourself a <strong>reasonable salary</strong> through payroll, with taxes withheld, <strong>before</strong> taking distributions. Reasonable generally means roughly what the business would have to pay someone else to do the work you do.</p>
+<p>There's no fixed formula or percentage in the tax code. You may have heard of a "60/40 rule," splitting profit 60% salary and 40% distributions. It's a rule of thumb, not an IRS rule, and it doesn't protect you if your salary is too low for the work you actually do.</p>
+
+<h2>What the IRS looks at</h2>
+<p>Factors the IRS and the courts have used include:</p>
+<ul>
+<li>Your <strong>training and experience</strong></li>
+<li>Your <strong>duties and responsibilities</strong> in the business</li>
+<li>The <strong>time and effort</strong> you put into the business</li>
+<li>What <strong>comparable businesses pay</strong> for similar services</li>
+<li>What the business pays <strong>non-owner employees</strong></li>
+<li>The history of your <strong>salary compared with distributions</strong></li>
+<li>How and when bonuses are paid</li>
+</ul>
+
+<h2>The risk of paying too little</h2>
+<p>Paying yourself nothing, or a token salary while taking large distributions, is a classic audit red flag. If the IRS decides your salary was unreasonably low, it can <strong>reclassify distributions as wages</strong>. The business then owes the payroll taxes that should have been paid, plus penalties and interest.</p>
+<p>There's also no need to overpay. Salary above what's reasonable just adds payroll taxes you didn't need to pay. The goal is a figure you can defend.</p>
+
+{callout(P, "business-tax-returns", "We help S-Corp owners set a salary they can defend, and we prepare the 1120-S and K-1s that go with it.")}
+
+<h2>How to set a salary you can defend</h2>
+<ol>
+<li><strong>List what you actually do.</strong> Many owners wear several hats, like manager, salesperson and technician. Each role has a market rate.</li>
+<li><strong>Research comparable pay.</strong> Government wage data, such as the Bureau of Labor Statistics occupational surveys, and industry salary surveys are good starting points.</li>
+<li><strong>Factor in time.</strong> A part-time owner can reasonably earn less than a full-time one.</li>
+<li><strong>Write it down.</strong> Keep notes on how you arrived at the number and update them as the business changes.</li>
+</ol>
+
+<h2>How your salary affects the rest of your taxes</h2>
+<ul>
+<li><strong>Qualified business income (QBI) deduction.</strong> Your salary reduces the business income that qualifies for the deduction. At higher incomes, though, the deduction can be limited by the W-2 wages the business pays. A salary that's too low or too high can cost you here.</li>
+<li><strong>Retirement contributions.</strong> Contributions to a Solo 401(k) or SEP for an S-Corp owner are based on <strong>W-2 salary</strong>, not distributions. A very low salary limits how much you can put away.</li>
+<li><strong>Social Security.</strong> Your future Social Security benefit is based on earnings you paid Social Security tax on. Distributions don't count.</li>
+</ul>
+
+<h2>The bottom line</h2>
+<p>A reasonable salary is part of the cost of having an S-Corp. Set it based on your real role and market pay, document why, and revisit it every year. (Still deciding whether an S-Corp is right for you? Read <a href="{P}blog/should-my-llc-elect-s-corp-status/">should your LLC elect S-Corp status</a>.)</p>''',
+     "Not Sure What to Pay Yourself?", "Tell us about your role and your business's profit. We'll reply within 24 hours and help you find a defensible number.")
+
+post("moving-in-or-out-of-connecticut-taxes",
+     "Moving In or Out of Connecticut? How Part-Year Resident Taxes Work | Max Return Taxes",
+     "Moving In or Out of Connecticut? How Your Taxes Work the Year You Move",
+     "How Connecticut taxes part-year residents and nonresidents, which return to file, how income is split, credits for other states, and how to show you changed residency.",
+     "Connecticut", "connecticut-tax-preparer",
+     "Which Connecticut return to file, how your income gets split, and how to avoid paying two states on the same money.",
+     f'''<p>Moving to or from Connecticut makes the year's taxes more complicated. You'll often need to file in two states, split your income between them, and make sure you're not taxed twice on the same money. Here's how it works.</p>
+
+<h2>Which Connecticut return do you file?</h2>
+{table(["Your situation", "Connecticut return"], [
+    ["Lived in Connecticut all year", "Form CT-1040, resident return"],
+    ["Moved into or out of Connecticut during the year", "Form CT-1040NR/PY, part-year resident return"],
+    ["Lived elsewhere all year but had Connecticut income", "Form CT-1040NR/PY, nonresident return"],
+])}
+
+<h2>How a part-year resident's income is split</h2>
+<p>As a part-year resident, Connecticut generally taxes:</p>
+<ul>
+<li><strong>All your income</strong> from the period you lived in Connecticut, wherever it came from, and</li>
+<li><strong>Only Connecticut-source income</strong> from the period you lived elsewhere, such as wages for work done in Connecticut, Connecticut rental property, or a business operating in Connecticut</li>
+</ul>
+<p>Your other state will usually tax the rest the same way. Getting the split right, like which paychecks, bonuses, interest or capital gains fall into which period, is where most part-year mistakes happen.</p>
+
+<h2>Avoiding double taxation</h2>
+<p>When two states could tax the same income, the state where you live generally gives you a <strong>credit for tax paid to the other state</strong>. That's common for Connecticut residents who commute to work in New York. New York taxes the wages earned there as a nonresident, and Connecticut gives a credit on the resident return. The credit has limits, so you may still owe some tax to Connecticut, but it prevents paying full tax twice.</p>
+<p>Remote work makes this trickier. Where your wages are taxed can depend on where you physically did the work and, in some cases, where your employer is located. New York and Connecticut in particular have rules that can surprise people. If you work remotely across state lines, it's worth having someone check.</p>
+
+{callout(P, "connecticut-tax-preparer", "Moved in or out of Connecticut? We prepare part-year and nonresident returns for both states, and make sure you get credit for tax paid to the other state.")}
+
+<h2>Changing your residency for real</h2>
+<p>Your tax residency follows your <strong>domicile</strong>, your true, permanent home. It's not just your mailing address. If you leave Connecticut, especially for a state with no income tax, make sure the move is clear on paper:</p>
+<ul>
+<li>Get a driver's license and register your car in your new state</li>
+<li>Register to vote in your new state</li>
+<li>Update your address with banks, employers, doctors and the IRS</li>
+<li>Keep records of your move date, lease or home purchase, and where you spend your time</li>
+</ul>
+<p>Keeping a home in Connecticut and spending a lot of time here can still make you a Connecticut resident for tax purposes. Under Connecticut's rules, that can happen even if you've technically moved.</p>
+
+<h2>Don't forget the rest of the year's details</h2>
+<ul>
+<li><strong>Withholding:</strong> make sure your employer updates your state withholding when you move.</li>
+<li><strong>Estimated payments:</strong> self-employed people may need to make estimated payments to both states for part of the year.</li>
+<li><strong>Business owners:</strong> moving yourself doesn't move your business. A Connecticut business can still create Connecticut-source income after you leave.</li>
+</ul>''',
+     "Moving This Year?", "Tell us where you're moving from and to. We'll reply within 24 hours and help you file correctly in both states.")
+
 # ---------------------------------------------------------------- RENDER
 def words(s): return len(strip(s).split())
 
