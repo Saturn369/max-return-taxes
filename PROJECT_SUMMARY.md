@@ -15,8 +15,8 @@
 | Service Area | All 50 States (fully remote-capable) |
 | Specialties | Business Tax Returns, Late Filings, Amendments |
 | Entity Types Served | S-Corps, C-Corps, LLCs, Partnerships, Sole Proprietors |
-| Phone | (860) 555-0100 *(placeholder — update before launch)* |
-| Email | info@maxreturntaxes.com *(placeholder — update before launch)* |
+| Phone | (860) 993-9904 *(placeholder — update before launch)* |
+| Email | freedomenka@gmail.com *(placeholder — update before launch)* |
 
 ---
 
@@ -103,8 +103,8 @@ Complete single-file website. No build tools, no dependencies — open directly 
 
 ## Things to Update Before Launch
 
-- [ ] Replace placeholder phone `(860) 555-0100` with real number
-- [ ] Replace placeholder email `info@maxreturntaxes.com` with real email
+- [ ] Replace placeholder phone `(860) 993-9904` with real number
+- [ ] Replace placeholder email `freedomenka@gmail.com` with real email
 - [ ] Update social media links (Facebook, Instagram, LinkedIn) in footer
 - [ ] Connect contact form to a backend / form service (Formspree, Netlify Forms, etc.)
 - [ ] Update stat numbers (10,000+, 15+, 98%) to match real figures

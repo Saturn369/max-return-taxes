@@ -48,7 +48,7 @@ max-return-taxes/
 ## Before Going Live
 
 - [ ] Replace `og-image.jpg` social links in JSON-LD `sameAs` with real profile URLs
-- [ ] Submit sitemap at `https://maxreturntaxes.com/sitemap.xml` in Google Search Console
+- [ ] Submit sitemap at `https://saturn369.github.io/max-return-taxes/sitemap.xml` in Google Search Console
 - [ ] Update `sitemap.xml` `<lastmod>` date on each publish
 - [ ] Create a real `og-image.jpg` using your brand assets (or keep the generated one)
 - [ ] Add Google Analytics or similar tracking
@@ -58,4 +58,4 @@ max-return-taxes/
 
 **Joseph E. Smith**  
 CT Licensed Tax Practitioner · Federally Authorized  
-Hartford County, Connecticut · info@maxreturntaxes.com · (860) 555-0100
+Hartford County, Connecticut · freedomenka@gmail.com · (860) 993-9904
