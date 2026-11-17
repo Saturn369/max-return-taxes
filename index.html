@@ -749,10 +749,11 @@
           </div>
         </div>
 
-        <form class="contact-form" id="cForm" action="https://formsubmit.co/freedomenka@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="New inquiry — Max Return Taxes website">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <form class="contact-form" id="cForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="2ea0597a-db8d-4862-8478-9f10b581dc0f">
+          <input type="hidden" name="subject" value="New inquiry — Max Return Taxes website">
+          <input type="hidden" name="from_name" value="Max Return Taxes Website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="fg"><label class="flabel" for="fn">First Name</label><input class="fi" type="text" id="fn" name="first_name" placeholder="John" required></div>
             <div class="fg"><label class="flabel" for="ln">Last Name</label><input class="fi" type="text" id="ln" name="last_name" placeholder="Smith" required></div>
@@ -868,16 +869,18 @@
     });
   }
 
-  // Form submit -> FormSubmit (delivers to email)
+  // Form submit -> Web3Forms (delivers to email)
   document.getElementById('cForm').addEventListener('submit',async e=>{
     e.preventDefault();
     const f=e.target,btn=f.querySelector('button[type=submit]'),orig=btn.innerHTML;
     btn.disabled=true;btn.innerHTML='Sending...';
     const show=(html,bg)=>{btn.innerHTML=html;btn.style.background=bg;setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;btn.style.background='';},5000);};
     try{
-      const r=await fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+      const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),15000);
+      const r=await fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f),signal:ctl.signal});
+      clearTimeout(t);
       const d=await r.json().catch(()=>({}));
-      if(!r.ok||d.success===false||d.success==='false')throw new Error(d.message||r.status);
+      if(!r.ok||d.success!==true)throw new Error(d.message||r.status);
       f.reset();
       show('<svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Message Sent!','linear-gradient(135deg,#3D9A6E,#2A7A54)');
     }catch(err){
