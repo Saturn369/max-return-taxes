@@ -3,7 +3,7 @@
   /* ---------- Analytics (GoatCounter: cookie-free, no personal data) ----------
      Set GOATCOUNTER_CODE to your GoatCounter site code (the "mycode" in
      https://mycode.goatcounter.com) to turn on page-view and click counting. */
-  var GOATCOUNTER_CODE = '';
+  var GOATCOUNTER_CODE = 'maxreturntaxes';
 
   if (GOATCOUNTER_CODE) {
     var gc = document.createElement('script');
