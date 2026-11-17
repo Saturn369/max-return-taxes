@@ -662,6 +662,171 @@ post("moving-in-or-out-of-connecticut-taxes",
 </ul>''',
      "Moving This Year?", "Tell us where you're moving from and to. We'll reply within 24 hours and help you file correctly in both states.")
 
+post("corrected-1099-or-k1-after-filing",
+     "Got a Corrected 1099 or K-1 After You Filed? Here's What to Do | Max Return Taxes",
+     "Got a Corrected 1099 or K-1 After You Filed? Here's What to Do",
+     "What to do when a corrected 1099-B, 1099-DIV, W-2 or K-1 arrives after you've filed: when to amend, when you don't need to, and how to avoid the problem next year.",
+     "Amendments", "amended-tax-returns",
+     "Whether a late correction means amending, what happens if you ignore it, and how to avoid it next year.",
+     f'''<p>You filed your return, and then a new form shows up marked <strong>"CORRECTED."</strong> Maybe your brokerage revised your 1099-B, or a partnership sent an amended K-1 in late summer. Here's how to decide what to do.</p>
+
+<h2>Why corrected forms happen</h2>
+<ul>
+<li><strong>Brokerage statements</strong> (1099-B, 1099-DIV, 1099-INT) are often revised when funds reclassify their distributions, for example from ordinary dividends to return of capital.</li>
+<li><strong>Schedule K-1s</strong> from partnerships, S-Corps and trusts often arrive late, and sometimes the business itself files an amended return and sends new K-1s.</li>
+<li><strong>W-2s</strong> are corrected on Form W-2c when an employer finds a payroll error.</li>
+<li><strong>1099-NEC or 1099-MISC</strong> forms get corrected when a payer reported the wrong amount, or sent a form you shouldn't have received.</li>
+</ul>
+
+<h2>Step 1: Compare it with what you filed</h2>
+<p>Put the corrected form next to the original and find exactly what changed. Sometimes nothing that affects your tax changed at all, like a fixed address or account number. In that case, there's nothing to do but keep the form with your records.</p>
+
+<h2>Step 2: Decide whether to amend</h2>
+<p>If the change affects your income, deductions, credits or tax, you generally should file an amended return. That's Form 1040-X for individuals, plus your state amendment.</p>
+<ul>
+<li><strong>If you'll owe more,</strong> amend promptly. Interest runs from the original due date. The IRS also gets a copy of the corrected form, so if you don't amend, you may get a CP2000 notice proposing the change anyway. (See <a href="{P}blog/irs-notice-what-to-do/">what IRS notices mean</a>.)</li>
+<li><strong>If you'll get money back,</strong> amend to claim it, as long as you're within the refund deadline. That's generally three years from when you filed, or two years from when you paid the tax. (More on <a href="{P}blog/how-far-back-can-you-amend-a-tax-return/">amendment time limits</a>.)</li>
+<li><strong>If the effect is tiny,</strong> it's still technically a change to your tax. We'll help you weigh the cost of amending against the amount involved and the chance of an IRS notice.</li>
+</ul>
+
+{callout(P, "amended-tax-returns", "Got a corrected form after filing? Send it to us. We'll tell you whether it changes anything and file the amendment if it does.")}
+
+<h2>What if the IRS has a different number than you?</h2>
+<p>Corrected forms sometimes create mismatches. For example, a corrected 1099-B may report sales proceeds without the cost basis. If you get an IRS notice based on incomplete information, you can respond with your own records, like purchase confirmations and statements, to show the correct gain or loss.</p>
+
+<h2>Corrected K-1s: one extra step</h2>
+<p>A corrected K-1 usually means the business amended its own return. The changes may also affect your <strong>state returns</strong>, including returns in other states where the business operates. Ask the business which states the correction affects.</p>
+
+<h2>How to avoid this next year</h2>
+<ul>
+<li><strong>Don't file the minute your forms arrive</strong> if you have brokerage accounts. Corrected 1099s are common in February and March.</li>
+<li><strong>Wait for every K-1.</strong> If you're a partner or S-Corp shareholder and your K-1 won't arrive in time, filing an <strong>extension</strong> is usually better than filing and amending later. Remember, an extension gives you more time to file, not to pay.</li>
+<li><strong>Check your IRS transcript</strong> before filing to see what's been reported for you. (Here's <a href="{P}blog/lost-w2-1099-irs-transcript/">how to get it</a>.)</li>
+</ul>''',
+     "Got a Corrected Form?", "Send us the original and corrected forms. We'll reply within 24 hours and tell you whether you need to amend.")
+
+post("how-to-amend-a-business-tax-return",
+     "How to Amend a Business Tax Return: S-Corp, Partnership & C-Corp | Max Return Taxes",
+     "How to Amend a Business Tax Return: S-Corps, Partnerships and C-Corps",
+     "How amending works for S-Corp (1120-S), partnership (1065) and C-Corp (1120) returns, how corrections reach owners through K-1s, time limits and state amendments.",
+     "Amendments", "amended-tax-returns",
+     "Each business type is corrected differently, and partnerships follow very different rules. Here's how it works.",
+     f'''<p>Business returns get things wrong too: a missed expense, an incorrect depreciation figure, a K-1 allocation that doesn't match the ownership. The fix depends on what kind of business you have. And because S-Corps and partnerships pass their income through to their owners, one mistake can affect several returns.</p>
+
+<h2>S Corporations (Form 1120-S)</h2>
+<p>An S-Corp corrects a filed return by filing an <strong>amended Form 1120-S</strong>, with the amended return box checked, and issuing <strong>corrected K-1s</strong> to every shareholder whose share changed.</p>
+<p>Because S-Corps generally don't pay federal income tax themselves, the tax effect shows up on the shareholders' personal returns. Each affected shareholder will usually need to file a <strong>Form 1040-X</strong>. That's why S-Corp corrections should be handled carefully and communicated to every owner.</p>
+
+<h2>Partnerships and multi-member LLCs (Form 1065)</h2>
+<p>Partnerships work differently. Under the partnership audit rules in effect since 2018, most partnerships <strong>can't simply file an amended 1065</strong>. Instead, they file an <strong>Administrative Adjustment Request (AAR)</strong>.</p>
+<p>With an AAR, the changes often don't go back to the partners' original returns. In many cases they're reported to partners and taken into account on the partners' <strong>current-year</strong> returns, or the partnership itself may pay the resulting tax. Which path applies depends on whether the change increases or decreases tax, and on choices the partnership makes.</p>
+<p>Some small partnerships, generally with 100 or fewer partners who are all individuals, certain corporations or estates, can <strong>elect out</strong> of these rules each year on their return. A partnership that elected out for the year in question can generally file an amended 1065 and send corrected K-1s the traditional way.</p>
+
+{callout(P, "amended-tax-returns", "Found an error on your business return? We'll figure out the right way to correct it — amended return or AAR — and handle the owners' amendments too.")}
+
+<h2>C Corporations (Form 1120)</h2>
+<p>A C-Corp amends its return on <strong>Form 1120-X</strong>. Because the corporation pays its own tax, the correction generally stays at the corporate level. Shareholders are only affected if something like dividend reporting changes.</p>
+
+<h2>Time limits</h2>
+<p>Businesses face the same basic refund deadline as individuals. To claim a refund, an amended return or AAR generally must be filed within <strong>three years</strong> of when the original return was filed, or two years from when the tax was paid if later. Partnerships also <strong>can't file an AAR once the IRS has opened an audit</strong> of that year.</p>
+
+<h2>Don't forget the states</h2>
+<p>A federal correction usually means state corrections too: the business's own state returns (in Connecticut, for example, the CT-1120X for corporations) and the owners' state returns in each state where the business files. If the business made Connecticut's pass-through entity tax election, that may need correcting as well.</p>
+
+<h2>Before you amend</h2>
+<ul>
+<li><strong>Find the root cause.</strong> If the error was in the books, it may repeat in later years. Fix it everywhere.</li>
+<li><strong>Talk to all the owners first.</strong> Corrected K-1s mean amended returns and possibly more tax for them.</li>
+<li><strong>Check later years.</strong> Errors in depreciation, basis or inventory often carry forward into later returns.</li>
+</ul>''',
+     "Need to Fix a Business Return?", "Tell us what went wrong and what type of business you have. We'll reply within 24 hours with the right way to correct it.")
+
+post("connecticut-pass-through-entity-tax",
+     "Connecticut Pass-Through Entity Tax: Should Your S-Corp or Partnership Elect It? | Max Return Taxes",
+     "Connecticut's Pass-Through Entity Tax: Should Your Business Elect It?",
+     "How Connecticut's elective pass-through entity tax works for S-Corps, partnerships and LLCs, the potential federal tax benefit, the trade-offs, and how to decide whether to elect.",
+     "Connecticut", "connecticut-tax-preparer",
+     "It's now optional. For some business owners it saves federal tax, and for others it's not worth it.",
+     f'''<p>If you own an S-Corp, partnership or multi-member LLC in Connecticut, you've probably heard of the <strong>pass-through entity tax</strong>, often called the PET or PE tax. It used to be required. Since the 2024 tax year it's been <strong>optional</strong>, which means every eligible business now has a decision to make.</p>
+
+<h2>What the pass-through entity tax is</h2>
+<p>Normally, an S-Corp or partnership doesn't pay income tax itself. The profit passes through to the owners, who pay Connecticut income tax on their personal returns. With the pass-through entity tax, the <strong>business pays Connecticut tax at the entity level</strong> on its income. The owners then get a <strong>credit</strong> on their personal Connecticut returns for their share of the tax the business paid.</p>
+
+<h2>Why a business would choose it: the federal deduction</h2>
+<p>The benefit is mostly on the <strong>federal</strong> side. Individuals who itemize can deduct only a limited amount of state and local taxes, the "SALT cap." But the IRS has said that state income taxes paid <strong>by a pass-through business</strong> are deductible by the business when it calculates its income. That deduction isn't subject to the individual SALT cap.</p>
+<p>So for owners whose state taxes go over the cap, having the business pay the Connecticut tax can lower their federal taxable income.</p>
+
+<h2>Why it doesn't make sense for everyone</h2>
+<ul>
+<li><strong>If you take the standard deduction,</strong> or your state and local taxes are under the cap anyway, there may be little or no federal benefit.</li>
+<li><strong>The SALT cap changed recently.</strong> A 2025 federal law raised the cap for many taxpayers, phasing back down at higher incomes. That changes the math for owners who were near the old limit.</li>
+<li><strong>The Connecticut credit may not fully offset the entity-level tax,</strong> so the federal savings need to be worth the difference.</li>
+<li><strong>Multiple owners have different situations.</strong> The election is made by the business, so it affects every owner, including some who may not benefit.</li>
+<li><strong>Nonresident owners</strong> need to consider how their home state treats the Connecticut credit.</li>
+<li><strong>It adds work:</strong> the business has to make the election, make the payments and give owners the information they need for their credits.</li>
+</ul>
+
+{callout(P, "connecticut-tax-preparer", "We'll run the numbers for your business and each owner, with and without the election, and tell you whether it's worth it.")}
+
+<h2>How to decide</h2>
+<p>The only reliable way is to compare the two scenarios for every owner. You need each owner's federal itemized deductions and SALT situation, their Connecticut credit, any other states involved, and the business's expected income. The answer can change from year to year, so it's worth revisiting annually.</p>
+
+<h2>Timing matters</h2>
+<p>The election is made each year through Connecticut's online tax system, myconneCT, and comes with its own deadlines and estimated payment requirements. Deciding late in the year can limit your options, so the best time to plan is before year-end.</p>''',
+     "Should Your Business Elect?", "Tell us about your business and its owners. We'll reply within 24 hours and help you decide with real numbers.")
+
+post("starting-a-business-in-connecticut-taxes",
+     "Starting a Business in Connecticut: Tax Registrations & Filings Checklist | Max Return Taxes",
+     "Starting a Business in Connecticut: The Tax Checklist",
+     "The tax registrations and filings new Connecticut businesses need: EIN, choosing a tax structure, myconneCT registration, sales tax, payroll withholding, annual reports and estimated taxes.",
+     "Connecticut", "connecticut-tax-preparer",
+     "The federal and Connecticut registrations, permits and filings to get right from day one.",
+     f'''<p>Starting a business in Connecticut comes with a list of tax registrations and ongoing filings. Getting them right at the start is much easier than cleaning them up later. Here's the checklist we walk new business owners through.</p>
+
+<h2>1. Choose your structure and how it's taxed</h2>
+<p>Your legal structure and your tax treatment are two separate decisions.</p>
+<ul>
+<li>A <strong>single-member LLC</strong> is taxed like a sole proprietorship by default, on Schedule C.</li>
+<li>A <strong>multi-member LLC</strong> is taxed as a partnership by default, filing Form 1065.</li>
+<li>Either can <strong>elect S-Corp status</strong>, which can save self-employment tax once profits are high enough. (See <a href="{P}blog/should-my-llc-elect-s-corp-status/">should your LLC elect S-Corp status</a>.)</li>
+</ul>
+<p>Business entities are formed through the Connecticut Secretary of the State at business.ct.gov.</p>
+
+<h2>2. Get an EIN</h2>
+<p>An <strong>Employer Identification Number</strong> is your business's federal tax ID. You'll need one to open a business bank account, hire employees, or file as a partnership or corporation. It's free from the IRS at irs.gov. Be careful of websites that charge for it.</p>
+
+<h2>3. Register with the Connecticut Department of Revenue Services</h2>
+<p>If your business needs Connecticut tax accounts, you register with DRS through <strong>myconneCT</strong>, the state's online tax portal. Common reasons to register:</p>
+<ul>
+<li><strong>Sales and use tax.</strong> If you sell taxable goods or services, you need a <strong>sales tax permit</strong> before you start selling. Connecticut's general rate is 6.35%, and some items are taxed at different rates or are exempt. Many services are taxable in Connecticut, so check before assuming yours isn't.</li>
+<li><strong>Employer withholding.</strong> If you'll have employees, including yourself as an S-Corp owner, you need a withholding account.</li>
+</ul>
+
+{callout(P, "connecticut-tax-preparer", "Starting a business in Connecticut? We'll help you pick the right tax structure and keep your federal and state filings on track from day one.")}
+
+<h2>4. If you have employees</h2>
+<ul>
+<li>Register with the <strong>Connecticut Department of Labor</strong> for unemployment insurance.</li>
+<li>Set up payroll for federal and Connecticut income tax withholding, Social Security and Medicare, and federal and state unemployment taxes.</li>
+<li>Collect a Form W-4 and Connecticut Form CT-W4 from each employee, and verify work eligibility with Form I-9.</li>
+<li>Connecticut also has a <strong>Paid Leave</strong> program funded by employee payroll contributions, which employers are responsible for withholding and remitting.</li>
+</ul>
+
+<h2>5. Keep up with ongoing filings</h2>
+<ul>
+<li><strong>Annual report:</strong> Connecticut LLCs and corporations file an annual report with the Secretary of the State to stay in good standing.</li>
+<li><strong>Sales tax returns:</strong> filed monthly, quarterly or annually, depending on how much tax you collect.</li>
+<li><strong>Payroll filings:</strong> federal and state withholding returns, plus year-end W-2s.</li>
+<li><strong>1099s</strong> for contractors you pay over the threshold. (See <a href="{P}blog/do-i-need-to-send-1099s-to-contractors/">the 1099 rules</a>.)</li>
+<li><strong>Estimated taxes</strong> for owners, both federal and Connecticut. (See <a href="{P}blog/quarterly-estimated-taxes-self-employed/">quarterly estimated taxes</a>.)</li>
+<li><strong>Annual income tax returns</strong> for the business and its owners.</li>
+<li>Check with your <strong>town</strong>, too. Connecticut municipalities tax business personal property such as equipment, and generally require a yearly declaration.</li>
+</ul>
+
+<h2>6. Set up your records from day one</h2>
+<p>Open a separate business bank account, use bookkeeping software, and keep receipts. Clean books make every filing above easier, and they're your best defense if the IRS or DRS ever asks questions.</p>''',
+     "Starting a Business in Connecticut?", "Tell us what you're starting. We'll reply within 24 hours and help you set up your taxes the right way.")
+
 # ---------------------------------------------------------------- RENDER
 def words(s): return len(strip(s).split())
 
