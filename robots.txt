@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://saturn369.github.io/max-return-taxes/sitemap.xml
+Sitemap: https://maxreturntaxes.com/sitemap.xml

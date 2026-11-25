@@ -4,7 +4,7 @@
 """
 import html, re
 
-SITE = "https://saturn369.github.io/max-return-taxes"
+SITE = "https://maxreturntaxes.com"
 PHONE_TEL, PHONE = "+18609939904", "(860) 993-9904"
 EMAIL = "freedomenka@gmail.com"
 WEB3FORMS_KEY = "2ea0597a-db8d-4862-8478-9f10b581dc0f"  # public by design; only delivers to EMAIL
