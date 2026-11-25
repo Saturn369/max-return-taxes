@@ -68,9 +68,9 @@ Complete single-file website. No build tools, no dependencies — open directly 
 | 1 | **Nav** | Fixed, transparent → glass on scroll, hamburger mobile menu |
 | 2 | **Hero** | Animated silk-style background (scarlett + gold blobs), word-by-word title entrance, Hartford County + 50 States eyebrow |
 | 3 | **Marquee** | Infinite scrolling trust bar: Business Returns · Late Filings · Amendments · All 50 States · IRS Enrolled |
-| 4 | **Stats** | Count-up animation: 10,000+ Returns · 50 States · 98% Satisfaction |
+| 4 | **Stats** | Count-up animation: 1,000+ Returns · 50 States · 98% Satisfaction |
 | 5 | **Services** | 3-card SpotlightCard grid (mouse-tracking radial glow): Business Returns, Late Filings, Amendments |
-| 6 | **Why Us** | Bento grid with GlareHover sweep: Nationwide, 100% Guarantee, Business Specialists, No Judgment, Fast Turnaround |
+| 6 | **Why Us** | Bento grid with GlareHover sweep: Nationwide, Every Deduction Reviewed, Business Specialists, No Judgment, Fast Turnaround |
 | 7 | **Process** | 3-step with connecting gold/scarlett line: Share Docs → We Prepare → Review & File |
 | 8 | **Testimonials** | Auto-scrolling carousel (pauses on hover), 4 client stories from TX, FL, CA, NY |
 | 9 | **CTA Banner** | "Stop Leaving Money on the Table" with scarlett radial glow |
@@ -107,7 +107,7 @@ Complete single-file website. No build tools, no dependencies — open directly 
 - [ ] Replace placeholder email `freedomenka@gmail.com` with real email
 - [ ] Update social media links (Facebook, Instagram, LinkedIn) in footer
 - [ ] Connect contact form to a backend / form service (Formspree, Netlify Forms, etc.)
-- [ ] Update stat numbers (10,000+, 15+, 98%) to match real figures
+- [x] Stat numbers confirmed by owner 2026-11-25 (1,000+ returns, 98% satisfaction)
 - [ ] Add real Google reviews / testimonials with actual client names (with permission)
 - [ ] Add a favicon (`<link rel="icon">` in `<head>`)
 - [ ] Consider adding a privacy policy and terms page links in the footer
