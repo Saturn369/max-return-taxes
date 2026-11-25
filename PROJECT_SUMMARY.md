@@ -66,9 +66,9 @@ Complete single-file website. No build tools, no dependencies — open directly 
 | # | Section | Key Features |
 |---|---------|-------------|
 | 1 | **Nav** | Fixed, transparent → glass on scroll, hamburger mobile menu |
-| 2 | **Hero** | Animated silk-style background (scarlett + gold blobs), word-by-word title entrance, rotating 15+ years badge, Hartford County + 50 States eyebrow |
+| 2 | **Hero** | Animated silk-style background (scarlett + gold blobs), word-by-word title entrance, Hartford County + 50 States eyebrow |
 | 3 | **Marquee** | Infinite scrolling trust bar: Business Returns · Late Filings · Amendments · All 50 States · IRS Enrolled |
-| 4 | **Stats** | Count-up animation: 10,000+ Returns · 15+ Years · 50 States · 98% Satisfaction |
+| 4 | **Stats** | Count-up animation: 10,000+ Returns · 50 States · 98% Satisfaction |
 | 5 | **Services** | 3-card SpotlightCard grid (mouse-tracking radial glow): Business Returns, Late Filings, Amendments |
 | 6 | **Why Us** | Bento grid with GlareHover sweep: Nationwide, 100% Guarantee, Business Specialists, No Judgment, Fast Turnaround |
 | 7 | **Process** | 3-step with connecting gold/scarlett line: Share Docs → We Prepare → Review & File |

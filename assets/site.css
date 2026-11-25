@@ -123,7 +123,7 @@ button{cursor:pointer;border:none;background:none;font:inherit}
 
 /* ===================== STATS ===================== */
 .stats-section{padding:72px 0}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 .stat-card{padding:40px 28px;text-align:center;background:var(--surface);border-right:1px solid var(--border);transition:background .3s}
 .stat-card:last-child{border-right:none}
 .stat-card:hover{background:var(--surface-hover)}
@@ -291,7 +291,7 @@ button{cursor:pointer;border:none;background:none;font:inherit}
   .services-grid{grid-template-columns:1fr}
   .sc{border-right:none;border-bottom:1px solid var(--border)}
   .sc:last-child{border-bottom:none}
-  .stats-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
   .stat-card:nth-child(2){border-right:none}
   .stat-card:nth-child(3){border-right:1px solid var(--border);border-top:1px solid var(--border)}
   .stat-card:nth-child(4){border-right:none;border-top:1px solid var(--border)}

@@ -42,7 +42,7 @@ max-return-taxes/
 
 ### E-E-A-T (Experience, Expertise, Authoritativeness, Trust)
 - Added "Licensed & Federally Authorized" bento card explaining CT + federal practitioner status
-- Added "Lead Practitioner" bento card: **Joseph E. Smith**, CT Licensed Tax Practitioner, Federally Authorized, 15+ years experience
+- Added "Lead Practitioner" bento card: **Joseph E. Smith**, CT Licensed Tax Practitioner, Federally Authorized
 - Removed fabricated physical address — site correctly lists Hartford County, CT
 
 ## Before Going Live
