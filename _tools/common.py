@@ -16,7 +16,7 @@ FAVICON = ("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 vie
 SERVICES = {"business-tax-returns": "Business Tax Returns", "late-tax-returns": "Late &amp; Unfiled Returns",
             "amended-tax-returns": "Amended Returns", "connecticut-tax-preparer": "Hartford County, CT"}
 SERVICE_OPTIONS = ["Business Tax Return", "Late Filing (1+ years behind)", "Amendment / Correction",
-                   "Individual Tax Return", "IRS Audit Support", "Multiple Services"]
+                   "Individual Tax Return", "Multiple Services"]
 STATES = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
           "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts",
           "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
